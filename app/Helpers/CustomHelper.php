@@ -61,7 +61,8 @@ class CustomHelper
                     null,
                     null,
                     null,
-                    $data['htmlBody']
+                    $data['htmlBody'],
+                    null
                 );
             } catch (Exception $e) {
             };

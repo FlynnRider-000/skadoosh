@@ -37,7 +37,7 @@ Route::get('/load-job-detail/{id}', [App\Http\Controllers\JobController::class, 
 // company routes
 
 Route::get('/companies', [App\Http\Controllers\CompanyController::class, 'showAllCompanies'])->name('show.all.companies');
-Route::get('/companies/{name}', [App\Http\Controllers\CompanyController::class, 'showCompany'])->name('show.company');
+Route::get('/companies/{company}', [App\Http\Controllers\CompanyController::class, 'showCompany'])->name('show.company');
 
 Route::prefix('admin')->group(function(){
     Route::get('dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');

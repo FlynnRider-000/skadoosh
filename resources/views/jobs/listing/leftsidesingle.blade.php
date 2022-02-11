@@ -7,7 +7,9 @@
             </div>
         @endif
         <div class="job-tittle">
-            <span class="company-name">{{ $jobData->company->name }}</span>
+            @if($jobData->company)
+                <span class="company-name">{{ $jobData->company->name }}</span>
+            @endif
             <h4>{{ $jobData->title }}</h4>
             <ul>
                 <li>

@@ -12,17 +12,27 @@ class CompanyController extends Controller
 {
 
     protected $companyService;
+    protected $jobService;
 
     /**
      * Contruct function to initialize 
      *  @return void
      */
-    public function __construct(CompanyService $companyService){
+    public function __construct(CompanyService $companyService, JobService $jobService){
         $this->companyService = $companyService;
+        $this->jobService = $jobService;
     }
 
     public function showAllCompanies()
-    {
-        $data['companyService'] = $this->companyService;
+    {   
+        $companies = [];
+        return view('company.listing', [
+            'companies' => $this->companyService->findAllPaginate()
+        ]);
+    }
+
+    public function showCompany(Company $company) {
+        $jobs = $company->jobs;
+        return view('company.jobs', ['company' => $company, 'jobs' => $jobs]);
     }
 }
