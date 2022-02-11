@@ -41,28 +41,31 @@ class CustomHelper
         
             $client = new Client($configuration);
 
-            $result = $client->Email->Send(
-                $data['subject'],
-                "vince@metaphix.com",
-                "Creatrhq.com",
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                array($data['to']),
-                array(),
-                array(),
-                array(),
-                array(),
-                array(),
-                null,
-                null,
-                null,
-                $data['htmlBody'],
-                null
-            );
+            try {
+                $result = $client->Email->Send(
+                    $data['subject'],
+                    "vince@metaphix.com",
+                    "Creatrhq.com",
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    array($data['to']),
+                    array(),
+                    array(),
+                    array(),
+                    array(),
+                    array(),
+                    null,
+                    null,
+                    null,
+                    $data['htmlBody'],
+                    null
+                );
+            } catch (Exception $e) {
+            };
         }
     }
 }
