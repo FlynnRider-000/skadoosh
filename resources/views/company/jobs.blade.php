@@ -52,7 +52,6 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="single-wrap d-flex justify-content-center">
-                    {{ $jobs->links() }}
                 </div>
             </div>
         </div>
