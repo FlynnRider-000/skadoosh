@@ -20,4 +20,9 @@ class CompanyController extends Controller
     public function __construct(CompanyService $companyService){
         $this->companyService = $companyService;
     }
+
+    public function showAllCompanies()
+    {
+        $data['companyService'] = $this->companyService;
+    }
 }

@@ -2,6 +2,9 @@
 
 namespace App\Helpers;
 
+use ElasticEmailClient\ElasticClient as Client;
+use ElasticEmailClient\ApiConfiguration as Configuration;
+
 class CustomHelper
 {
     public static function printCurrency()
@@ -31,12 +34,12 @@ class CustomHelper
 	public static function sendEmail($data)
     {
         if(!empty($data) && isset($data['subject']) && isset($data['to']) && isset($data['htmlBody'])) {
-            $configuration = new \ElasticApiConfiguration([
+            $configuration = new Configuration([
                 'apiUrl' => 'https://api.elasticemail.com/v2/',
                 'apiKey' => '6D76024A20958ECAA7E3478ED15D57A8349EEF712A3DDFE6AFADD59AC773E469C2027AC62FEDA946285FC07FF09BEE30'
             ]);
         
-            $client = new \ElasticClient($configuration);
+            $client = new Client($configuration);
 
             $result = $client->Email->Send(
                 $data['subject'],

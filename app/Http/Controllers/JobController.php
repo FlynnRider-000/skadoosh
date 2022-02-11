@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Services\Job\JobService;
 use App\Services\Company\CompanyService;
 use App\Services\Category\CategoryService;
+use Stripe;
 
 class JobController extends Controller {
     
