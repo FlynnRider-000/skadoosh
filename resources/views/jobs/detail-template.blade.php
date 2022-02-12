@@ -15,7 +15,7 @@
             </div>
 
             <div class="apply-btn2">
-                <a href="{{ url('job-detail/'. $jobData->id) }}" target="_blank" class="btn">Apply</a>
+                <a href="{{ url('job-detail/'. str_replace(' ','-', strtolower($jobData->title))) }}" target="_blank" class="btn">Apply</a>
             </div>
         </div>
 		 <div class="job-post-details col col-lg-12">
@@ -31,7 +31,7 @@
             <h5>Interested? Apply for this role.</h5>
 
             <div class="apply-btn2">
-                <a href="{{ url('job-detail/'. $jobData->id) }}" target="_blank" class="btn">Apply</a>
+                <a href="{{ url('job-detail/'. str_replace(' ','-', strtolower($jobData->title))) }}" target="_blank" class="btn">Apply</a>
             </div>
         </div>
     </div>

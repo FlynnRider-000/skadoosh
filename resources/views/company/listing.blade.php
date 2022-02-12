@@ -39,7 +39,7 @@
                                                 <span class="badge badge-pill badge-soft-success font-size-11">{{ $company->jobs->count() }}</span>
                                             </td>
                                             <td class="align-middle">
-                                                <a href="{{ route('show.company', ['company'=> $company->id]) }}" class="btn btn-details text-white">
+                                                <a href="{{ route('show.company', ['name'=> str_replace(' ','-', strtolower($company->name))]) }}" class="btn btn-details text-white">
                                                     View Details
                                                 </a>
                                             </td>

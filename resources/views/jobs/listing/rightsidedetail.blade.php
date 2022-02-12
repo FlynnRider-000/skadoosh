@@ -12,7 +12,7 @@
     <div class="col-xs-12 col-lg-10">
         <div class="job-tittle">
             <h4>{{ $jobData->company->name }}</h4>
-            <a href="{{ url('job-detail/'. $jobData->id) }}"><h4>{{ $jobData->title }}</h4></a>
+            <a href="{{ url('job-detail/'. str_replace(' ','-', strtolower($jobData->title))) }}"><h4>{{ $jobData->title }}</h4></a>
             <span>{{ $jobData['created_at']->format('M d') }}</span>
             <span>{{ $jobData->category->name }}</span>
             <span>{{ \Config::get('constants.jobTypes')[$jobData->job_type] }}</span>
@@ -22,7 +22,7 @@
         </div>
 
         <div class="apply-btn2">
-            <a href="{{ url('job-detail/'. $jobData->id) }}" target="_blank" class="btn">Apply</a>
+            <a href="{{ url('job-detail/'. str_replace(' ','-', strtolower($jobData->title))) }}" target="_blank" class="btn">Apply</a>
         </div>
     </div>
     <div class="job-post-details col col-lg-12">
@@ -38,7 +38,7 @@
             <h5>Interested? Apply for this role.</h5>
 
             <div class="apply-btn2">
-                <a href="{{ url('job-detail/'. $jobData->id) }}" target="_blank" class="btn">Apply</a>
+                <a href="{{ url('job-detail/'. str_replace(' ','-', strtolower($jobData->title))) }}" target="_blank" class="btn">Apply</a>
             </div>
         </div>
     </div>

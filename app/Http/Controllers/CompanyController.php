@@ -31,8 +31,13 @@ class CompanyController extends Controller
         ]);
     }
 
-    public function showCompany(Company $company) {
-        $jobs = $company->jobs;
-        return view('company.jobs', ['company' => $company, 'jobs' => $jobs]);
+    public function showCompany($name) {
+        $companies = Company::all();
+        foreach ($companies as $company) {
+            if($company->slug === $name) {
+                return view('company.jobs', ['company' => $company, 'jobs'=> $company->jobs]);
+            }
+        }
+        abort(404);
     }
 }

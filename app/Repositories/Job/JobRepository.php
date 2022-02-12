@@ -205,4 +205,9 @@ class JobRepository implements RepositoryInterface {
 
         return $job->save();
     }
+
+    public function findByName($name)
+    {
+        return $this->job->where('title', $name)->first();
+    }
 }

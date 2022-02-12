@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\CustomHelper;
 use App\Models\Company;
+use App\Models\Job;
 use Illuminate\Http\Request;
 use App\Services\Job\JobService;
 use App\Services\Company\CompanyService;
@@ -82,19 +83,24 @@ class JobController extends Controller {
      *
      * @return 
      */
-    public function detail( $id )
-    { 
-        $jobDetails = $this->jobService->find($id);
-        if(!empty($jobDetails)) {
-            $data               = [];
-            $data['categories'] = $this->categoryService->findAll();
-            $data['jobData']    = $jobDetails;
-            $data['code']       = $id;
-
-            return view('jobs.detail', $data);
-        }  
-        abort(404);
-        
+    public function detail( $name )
+    {
+        $jobDetails = Job::all();
+        foreach($jobDetails as $applyjob) {
+            $jobname = $applyjob->slug;
+            if($jobname === $name){
+                $get_id = $applyjob->id;
+                $jobDetails = $this->jobService->find($get_id);
+                     if(!empty($jobDetails)) {
+                         $data               = [];
+                         $data['categories'] = $this->categoryService->findAll();
+                         $data['jobData']    = $jobDetails;
+                         $data['code']       = $get_id;
+                         return view('jobs.detail', $data);
+                     }  
+                     abort(404);
+            }
+        }
     }
 
     /**

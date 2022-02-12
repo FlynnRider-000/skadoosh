@@ -216,4 +216,14 @@ class JobService {
             return null;
         }
     }
+
+    public function findByName($name)
+    {
+        try {
+            return $this->jobRepository->findByName($name);
+        } catch (\Exception $e) {
+            dd('error', $e);
+            return null;
+        }
+    }
 }
