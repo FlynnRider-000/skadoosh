@@ -27,6 +27,7 @@ Route::post('/post-a-job', [App\Http\Controllers\JobController::class, 'store'])
 Route::get('/preview-job/{id}', [App\Http\Controllers\JobController::class, 'preview']);
 Route::get('/make-payment/{id}', [App\Http\Controllers\JobController::class, 'payment']);
 Route::post('/payment-done', [App\Http\Controllers\JobController::class, 'paymentDone']);
+Route::get('/freepost', [App\Http\Controllers\JobController::class, 'nonpayment']);
 
 Route::get('/search-job', [App\Http\Controllers\JobController::class, 'searchJobs']);
 

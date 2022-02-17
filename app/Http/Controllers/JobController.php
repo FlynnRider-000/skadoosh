@@ -280,19 +280,9 @@ class JobController extends Controller {
         return redirect('post-a-job')->with('error', 'Payment failed, please contact support.');
     }
 
-    public function nonpaymentDone(Request $request)
+    public function nonpayment(Request $request)
     {
-        if(isset($request->job_id)) {
-			$jobDetails = $this->jobService->find($request->job_id);
-            if(!empty($jobDetails)) {
-				// update job status as completed
-				$this->jobService->updateJobCreationStepById($request->job_id, 2);
-
-                return redirect('post-a-job')->with('non_payment_done', 'Job post has been successfully completed.');
-			}
-        }
-
-        return redirect('post-a-job')->with('error', 'Job post failed, please contact support.');
+        return redirect('post-a-job')->with('free_post', 'Job post has been successfully posted.');
     }
 
     public function loadJobDetail($id)

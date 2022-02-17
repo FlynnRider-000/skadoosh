@@ -413,6 +413,7 @@
                 <div class="modal-body text-center pl-5 pr-5">
                     <img src="{{asset('assets/img/tick.png')}}" alt="tick">
                     <div class="d-block">
+                        <h3>Job Post Success</h3>
                         <p>
                             Thank you for posted a job and enjoy the features
                         </p>
@@ -433,10 +434,11 @@
     <script type="text/javascript">
         $(document).on('ready', function() {
             @if(session('payment_done'))
-            $('#success_modal').modal('toggle');
-            @else(session('non_payment_done'))
-            $('#success_modal_nonpay').modal('toggle');
+                $('#success_modal').modal('toggle');
+            @elseif(session('free_post'))
+                $('#success_modal_nonpay').modal('toggle');
             @endif
+
             $('input[name=jobCategory]:checked').parent().addClass("active");
             $('input:radio').click(function () {
                 $('input:not(:checked)').parent().removeClass("active");

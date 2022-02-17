@@ -126,7 +126,7 @@
                             {{ CustomHelper::gotoPaymentstatus() }}
                         </a>
                         @else
-                        <a href="{{ url('post-a-job') }}" class="mkch">
+                        <a href="{{ url('/freepost') }}" class="mkch">
                             {{ CustomHelper::SimpleJobPoststatus() }}
                         </a>
                     @endif
