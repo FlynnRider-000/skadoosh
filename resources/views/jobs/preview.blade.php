@@ -120,8 +120,16 @@
 
             <div class="container">
                 <div class="prvbtns text-center">
-                    <a href="{{ url('post-a-job/'.$code) }}" class="mkch default">Back to Job Detail</a>
-                    <a href="{{ url('make-payment/'.$code) }}" class="mkch">Go to Payment</a>
+                    <a href="{{ url('post-a-job/') }}" class="mkch default">Back to Job Detail</a>
+                    @if( $jobData->is_premium == true)
+                        <a href="{{ url('make-payment/'.$code) }}" class="mkch">
+                            {{ CustomHelper::gotoPaymentstatus() }}
+                        </a>
+                        @else
+                        <a href="{{ url('post-a-job') }}" class="mkch">
+                            {{ CustomHelper::SimpleJobPoststatus() }}
+                        </a>
+                    @endif
                 </div>
             </div>
         </div>

@@ -79,14 +79,14 @@
 
                                     <div class="company-img">
                                         @if(isset($job->company) && $job->company->logo)
-                                            <a href="{{ url('job-detail/'. $job->id) }}">
+                                            <a href="{{ url('job-detail/'. str_replace(' ','-', strtolower($job->title))) }}">
                                                 <img src="{{ asset('/'.env('COMPANY_IMAGE_PATH').'/'.$job->company->logo) }}" alt="">
                                             </a>
                                         @endif
                                     </div>
                                     <div class="job-tittle">
 
-                                        <a href="{{ url('job-detail/'. $job->id) }}">
+                                        <a href="{{ url('job-detail/'. str_replace(' ','-', strtolower($job->title))) }}">
                                             <h4>{{ $job->title }}</h4>
                                         </a>
                                         <ul>

@@ -17,6 +17,16 @@ class CustomHelper
         return env('SIMPLE_JOBPOST_COST');
     }
 
+    public static function gotoPaymentstatus()
+    {
+        return env('Go_To_Payment_Status');
+    }
+
+    public static function SimpleJobPoststatus()
+    {
+        return env('Simple_Job_Post_Status');
+    }
+
     public static function getPremiumJobPostCost()
     {
         return env('PREMIUM_JOBPOST_COST');

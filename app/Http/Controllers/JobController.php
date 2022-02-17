@@ -112,18 +112,18 @@ class JobController extends Controller {
     public function store(Request $request)
     {
         $request->validate([
-            'jobTitle'          =>  'required|max:255',
-            'jobCategory'       =>  'required',
-            'jobType'           =>  'required',
-            'jobLocation'       =>  ( $request->jobLocation == 'office' || $request->jobLocation == 'remote_region' ) ? 'required' : 'nullable',
+            'jobTitle'                  =>  'required|max:255',
+            'jobCategory'               =>  'required',
+            'jobType'                   =>  'required',
+            'jobLocation'               =>  ( $request->jobLocation == 'office' || $request->jobLocation == 'remote_region' ) ? 'required' : 'nullable',
             'jobOfficeLocationCity'     =>  $request->jobLocation === 'office' ? 'required' : 'nullable',
             'jobOfficeLocationState'    =>  $request->jobLocation === 'office' ? 'required' : 'nullable',
             'jobRegionalRestriction'    =>  $request->jobLocation === 'remote_region' ? 'required' : 'nullable',
-            'jobApplyLink'      =>  'url',
-            'companyName'       =>  'required',
-            'companyEmail'      =>  'required|email:rfc,dns',
-            'companyLogo'       =>  ($request->hasFile('companyLogo')) ? 'image|mimes:jpeg,png,jpg,gif,svg' : 'nullable',
-            'companyWebsite'    =>  'nullable|url'
+            'jobApplyLink'              =>  'url',
+            'companyName'               =>  'required',
+            'companyEmail'              =>  'required|email:rfc,dns',
+            'companyLogo'               =>  ($request->hasFile('companyLogo')) ? 'image|mimes:jpeg,png,jpg,gif,svg' : 'nullable',
+            'companyWebsite'            =>  'nullable|url'
         ]);
         
         $request['jobLocationCity']     = '';
@@ -278,6 +278,21 @@ class JobController extends Controller {
         }
 
         return redirect('post-a-job')->with('error', 'Payment failed, please contact support.');
+    }
+
+    public function nonpaymentDone(Request $request)
+    {
+        if(isset($request->job_id)) {
+			$jobDetails = $this->jobService->find($request->job_id);
+            if(!empty($jobDetails)) {
+				// update job status as completed
+				$this->jobService->updateJobCreationStepById($request->job_id, 2);
+
+                return redirect('post-a-job')->with('non_payment_done', 'Job post has been successfully completed.');
+			}
+        }
+
+        return redirect('post-a-job')->with('error', 'Job post failed, please contact support.');
     }
 
     public function loadJobDetail($id)
