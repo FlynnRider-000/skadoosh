@@ -21,7 +21,6 @@ class Job extends Model {
     {
         return $this->hasOne(JobSalary::class);
     }
-
     /**
      * Get the payment associated with the job.
      */

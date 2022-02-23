@@ -9,7 +9,7 @@
     <meta content="JianWang" name="author" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ URL::asset('assets/images/favicon.ico') }}">
-    <meta content="{{ csrf_token() }}" name="csrf-token"/>
+    <meta content="{{ csrf_token() }}" name="csrf-token">
     @include('layouts.backend.head-css')
 </head>
 

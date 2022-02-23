@@ -47,7 +47,7 @@
 </div>
 <!-- Job List Area End -->
 <!--Pagination Start  -->
-<!-- <div class="pagination-area pb-115 text-center">
+<div class="pagination-area pb-115 text-center">
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
@@ -56,7 +56,7 @@
             </div>
         </div>
     </div>
-</div> -->
+</div>
 <!--Pagination End  -->
 
 <script type="text/javascript">
@@ -96,7 +96,7 @@ a {
     color: #0b74ff;
     text-decoration: underline;
     font-weight: 700;
-    
+    font-family: 'Roboto', sans-serif;
 }
 
 .pbtnss{margin-bottom:20px;}

@@ -20,7 +20,7 @@
         <div class="container-fluid p-0">
             <div class="row g-0">
 
-                <div class="col-xl-9">
+                <div class="col-xl-9" style="background-color:#d4dbf9;">
                     <div class="auth-full-bg pt-lg-5 p-4">
                         <div class="w-100">
                             <div class="bg-overlay"></div>
@@ -31,7 +31,7 @@
                                         <div class="col-lg-7">
                                             <div class="text-center">
 
-                                                <h4 class="mb-3"><i class="bx bxs-quote-alt-left text-primary h1 align-middle me-3"></i><span class="text-primary">5k</span>+ Satisfied clients</h4>
+                                                <h4 class="mb-3"><i class="bx bx-quote-alt-left text-primary h1 align-middle me-3"></i><span class="text-primary">5k</span>+ Satisfied clients</h4>
 
                                                 <div dir="ltr">
                                                     <div class="owl-carousel owl-theme auth-review-carousel" id="auth-review-carousel">

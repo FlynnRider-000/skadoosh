@@ -30,7 +30,6 @@ class Company extends Model {
     // {
     //     return Job::where('company_id', $this->id)->paginate(15);
     // }
-
     public function getSlugAttribute() {
         $lowercase = strtolower($this->name);
         return str_replace(" ", "-", $lowercase);

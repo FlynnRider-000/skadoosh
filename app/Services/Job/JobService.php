@@ -53,6 +53,16 @@ class JobService {
         }
     }
 
+    public function findByName($name)
+    {
+        try {
+            return $this->jobRepository->findByName($name);
+        } catch (\Exception $e) {
+            dd('error', $e);
+            return null;
+        }
+    }
+
     /**
      * Get Jobs by pagination
      *
@@ -68,7 +78,6 @@ class JobService {
             return null;
         }
     }
-
     /**
      * Get Jobs by city
      *
@@ -211,16 +220,6 @@ class JobService {
     {
         try {
             return $this->jobRepository->updateKeyById($jobId, 'creation_step', $step);
-        } catch (\Exception $e) {
-            dd('error', $e);
-            return null;
-        }
-    }
-
-    public function findByName($name)
-    {
-        try {
-            return $this->jobRepository->findByName($name);
         } catch (\Exception $e) {
             dd('error', $e);
             return null;

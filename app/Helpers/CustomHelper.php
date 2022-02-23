@@ -1,10 +1,8 @@
 <?php
 
 namespace App\Helpers;
-
 use ElasticEmailClient\ElasticClient as Client;
 use ElasticEmailClient\ApiConfiguration as Configuration;
-
 class CustomHelper
 {
     public static function printCurrency()
@@ -16,7 +14,6 @@ class CustomHelper
     {
         return env('SIMPLE_JOBPOST_COST');
     }
-
     public static function gotoPaymentstatus()
     {
         return env('Go_To_Payment_Status');
@@ -26,7 +23,6 @@ class CustomHelper
     {
         return env('Simple_Job_Post_Status');
     }
-
     public static function getPremiumJobPostCost()
     {
         return env('PREMIUM_JOBPOST_COST');
@@ -43,39 +39,35 @@ class CustomHelper
 	
 	public static function sendEmail($data)
     {
-        // if(!empty($data) && isset($data['subject']) && isset($data['to']) && isset($data['htmlBody'])) {
-        //     $configuration = new Configuration([
-        //         'apiUrl' => 'https://api.elasticemail.com/v2/',
-        //         'apiKey' => '6D76024A20958ECAA7E3478ED15D57A8349EEF712A3DDFE6AFADD59AC773E469C2027AC62FEDA946285FC07FF09BEE30'
-        //     ]);
+        if(!empty($data) && isset($data['subject']) && isset($data['to']) && isset($data['htmlBody'])) {
+            $configuration = new \ElasticApiConfiguration([
+                'apiUrl' => 'https://api.elasticemail.com/v2/',
+                'apiKey' => '6D76024A20958ECAA7E3478ED15D57A8349EEF712A3DDFE6AFADD59AC773E469C2027AC62FEDA946285FC07FF09BEE30'
+            ]);
         
-        //     $client = new Client($configuration);
-
-        //     try {
-        //         $result = $client->Email->Send(
-        //             $data['subject'],
-        //             "vince@metaphix.com",
-        //             "Creatrhq.com",
-        //             null,
-        //             null,
-        //             null,
-        //             null,
-        //             null,
-        //             null,
-        //             array($data['to']),
-        //             array(),
-        //             array(),
-        //             array(),
-        //             array(),
-        //             array(),
-        //             null,
-        //             null,
-        //             null,
-        //             $data['htmlBody'],
-        //             null
-        //         );
-        //     } catch (Exception $e) {
-        //     };
-        // }
+            $client = new \ElasticClient($configuration);
+            $result = $client->Email->Send(
+                $data['subject'],
+                "vince@metaphix.com",
+                "Creatrhq.com",
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                array($data['to']),
+                array(),
+                array(),
+                array(),
+                array(),
+                array(),
+                null,
+                null,
+                null,
+                $data['htmlBody'],
+                null
+            );
+        }
     }
 }
