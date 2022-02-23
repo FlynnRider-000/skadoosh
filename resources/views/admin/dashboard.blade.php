@@ -106,7 +106,7 @@
                         </span>
                     </div>
                     <div class="media-body col-xl-7">
-                        <h3 class="mb-0 text-black"><span class="counter ml-0 fs-5 fw-medium align-middle">{{$commoncity[0]->location_city}}</span></h3>
+                    <h3 class="mb-0 text-black"><span class="counter ml-0 fs-4 fw-medium align-middle">{{empty($commoncity) ? '' : $commoncity[0]->location_city}}</span></h3>
                         <p class="mb-2 fs-5 mx-auto my-auto">Top Cities Selling</p>
                     </div>
                 </div>
