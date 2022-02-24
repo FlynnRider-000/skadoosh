@@ -127,8 +127,8 @@
                                 <th class="align-middle">Job Title</th>
                                 <th class="align-middle">Job Location</th>
                                 <th class="align-middle">Job Type</th>
-                                <th class="align-middle">currency</th>
-                                <th class="align-middle">price</th>
+                                <th class="align-middle">Currency</th>
+                                <th class="align-middle">Price</th>
                                 <th class="align-middle">Transaction Time</th>
                             </tr>
                         </thead>
@@ -137,9 +137,9 @@
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
                                     <td>{{ $transaction->title }}</td>
-                                    <td>{{ $transaction->location }}</td>
-                                    <td>{{ $transaction->job_type }}</td>
-                                    <td>{{ $transaction->currency }}</td>
+                                    <td>{{ str_replace('_',' ', ucwords($transaction->location, "_")) }}</td>
+                                    <td>{{ str_replace('_',' ', ucwords($transaction->job_type, "_")) }}</td>
+                                    <td>{{ strtoupper($transaction->currency) }}</td>
                                     <td>${{ ($transaction->price)/100 }} </td>
                                     <td>{{ $transaction->created_at }}</td>
                                 </tr>
