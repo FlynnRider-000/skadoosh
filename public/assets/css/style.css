@@ -6537,11 +6537,11 @@ form.search-box .search-form a {
         padding: 20px 7px;
     }
 }
-@media only screen and (min-width: 576px) and (max-width: 767px) {
+/*@media only screen and (min-width: 576px) and (max-width: 767px) {
     .single-job-items {
         padding: 20px 25px;
     }
-}
+}*/
 .single-job-items .company-img img {
 
     width: 52px;
@@ -7682,5 +7682,20 @@ footer {
     .main-hero .wrap-inner {
         padding-top: 15px;
     }
+}
+
+.single-job-items .job-tittle a h4 {
+    color: #0b74ff;
+    text-decoration: underline;
+}
+
+.single-job-items .job-tittle a h4:hover {
+    color: #0b74ff;
+    text-decoration: underline;
+}
+
+.job-tittle .company-name {
+    font-family: inherit;
+    color: #2E3B56 !important;
 }
 
