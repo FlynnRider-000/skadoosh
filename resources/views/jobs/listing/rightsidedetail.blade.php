@@ -20,7 +20,6 @@
                 <span>{{ \Config::get('constants.jobSalaryCurrency')[$jobData->salary->currency_type] . $jobData->salary->range_from .' - '. \Config::get('constants.jobSalaryCurrency')[$jobData->salary->currency_type] . $jobData->salary->range_to .' '.  \Config::get('constants.jobSalaryType')[$jobData->salary->rate] }}</span>
             @endif
         </div>
-
         <div class="apply-btn2">
             <a href="{{ url('job-detail/'. str_replace(' ','-', strtolower($jobData->title))) }}" target="_blank" class="btn">Apply</a>
         </div>

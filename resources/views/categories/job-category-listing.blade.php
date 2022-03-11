@@ -41,7 +41,7 @@
             }*/
         }
     }
-</style> 
+</style>
 <section class="featured-job-area feature-padding">
     <div class="container">
         <!-- Section Tittle -->
@@ -92,6 +92,7 @@
                                         <ul>
                                             <li>{{ $job->category->name }}</li>
                                             <li><i class="fas fa-map-marker-alt"></i>{{ $job->company->location }}</li>
+                                            
                                             @if(isset($job->salary))
                                                 <li>{{strtoupper($job->salary->rate)}} Job</li>
                                                 <li>{{ \Config::get('constants.jobSalaryCurrency')[$job->salary->currency_type] . $job->salary->range_from .' - '. \Config::get('constants.jobSalaryCurrency')[$job->salary->currency_type] . $job->salary->range_to .' '}}</li>
@@ -141,7 +142,7 @@
     })
    
 
-</script> 
+</script>
 
 
    

@@ -8,6 +8,7 @@
 <div class="job-listing-area jbdet">
     <div class="container main-bg jbdet">
         <div class="row">
+
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
@@ -97,7 +98,8 @@
     margin-bottom: 7px;
     color: #0b74ff;
     text-decoration: underline;
-	font-weight:400;    
+	font-weight:400;
+    font-family: 'Urbanist', sans-serif;
 }
 
 .pbtnss{ margin-bottom:20px; }

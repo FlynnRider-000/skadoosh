@@ -49,6 +49,7 @@
                                 </li>
                             </ul>
                         </li>
+
                         <li>
                             <a href="javascript: void(0);" class="has-arrow"
                                 key="t-horizontal">@lang('translation.Horizontal')</a>
@@ -69,7 +70,9 @@
                         </li>
                     </ul>
                 </li>
+
                 <li class="menu-title" key="t-apps">@lang('translation.Apps')</li>
+
                 <li>
                     <a href="javascript: void(0);" class="waves-effect">
                         <i class="bx bx-calendar"></i><span class="badge rounded-pill bg-success float-end">New</span>
@@ -80,12 +83,14 @@
                         <li><a href="#" key="t-full-calendar">@lang('translation.Full_Calendar')</a></li>
                     </ul>
                 </li>
+
                 <li>
                     <a href="#" class="waves-effect">
                         <i class="bx bx-chat"></i>
                         <span key="t-chat">@lang('translation.Chat')</span>
                     </a>
                 </li>
+
                 <li>
                     <a href="#" class="waves-effect">
                         <i class="bx bx-file"></i>
@@ -94,6 +99,7 @@
                         <span key="t-file-manager">@lang('translation.File_Manager')</span>
                     </a>
                 </li>
+
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-store"></i>
@@ -112,6 +118,7 @@
                         </li>
                     </ul>
                 </li>
+
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-bitcoin"></i>
@@ -127,6 +134,7 @@
                         <li><a href="#" key="t-ico">@lang('translation.ICO_Landing')</a></li>
                     </ul>
                 </li>
+
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-envelope"></i>
@@ -152,6 +160,7 @@
                         </li>
                     </ul>
                 </li>
+
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-receipt"></i>
@@ -198,6 +207,7 @@
                         <li><a href="#" key="t-profile">@lang('translation.Profile')</a></li>
                     </ul>
                 </li>
+
                 <li>
                     <a href="javascript: void(0);" class="waves-effect">
                         <span class="badge rounded-pill bg-success float-end"
@@ -211,7 +221,9 @@
                         <li><a href="#" key="t-blog-details">@lang('translation.Blog_Details')</a></li>
                     </ul>
                 </li>
+
                 <li class="menu-title" key="t-pages">@lang('translation.Pages')</li>
+
                 <li>
                     <a href="javascript: void(0);" class="waves-effect">
                         <span class="badge rounded-pill bg-success float-end"
@@ -244,6 +256,7 @@
                                 key="t-two-step-verification-2">@lang('translation.Two_step_verification') 2</a></li>
                     </ul>
                 </li>
+
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-file"></i>
@@ -260,7 +273,9 @@
                         <li><a href="#" key="t-error-500">@lang('translation.Error_500')</a></li>
                     </ul>
                 </li>
+
                 <li class="menu-title" key="t-components">@lang('translation.Components')</li>
+
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-tone"></i>
@@ -292,6 +307,7 @@
                         <li><a href="#" key="t-notifications">@lang('translation.Notifications')</a></li>
                     </ul>
                 </li>
+
                 <li>
                     <a href="javascript: void(0);" class="waves-effect">
                         <i class="bx bxs-eraser"></i>
@@ -312,6 +328,7 @@
                         <li><a href="#" key="t-form-mask">@lang('translation.Form_Mask')</a></li>
                     </ul>
                 </li>
+
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-list-ul"></i>
@@ -326,6 +343,7 @@
                         </li>
                     </ul>
                 </li>
+
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bxs-bar-chart-alt-2"></i>
@@ -342,6 +360,7 @@
                                 key="t-sparkline-charts">@lang('translation.Sparkline_Charts')</a></li>
                     </ul>
                 </li>
+
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-aperture"></i>
@@ -355,6 +374,7 @@
                         <li><a href="#" key="t-font-awesome">@lang('translation.Font_awesome')</a></li>
                     </ul>
                 </li>
+
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-map"></i>
@@ -366,6 +386,7 @@
                         <li><a href="#" key="t-l-maps">@lang('translation.Leaflet_Maps')</a></li>
                     </ul>
                 </li>
+
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-share-alt"></i>

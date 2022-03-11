@@ -103,7 +103,7 @@
                                 <strong>{{ ucwords( str_replace('_', ' ', $jobData->job_type) )}}</strong>
                             </p>
                             <p>
-                                Type of Salary<br/>
+                                Type of Salary<br>
                                 <strong>{{strtoupper($jobData->salary->rate)}} - ({{$jobData->salary->range_from}} ~ {{$jobData->salary->range_to}}) / {{$jobData->salary->currency_type}}</strong>
                             </p>
                         </div>
@@ -130,6 +130,7 @@
                             {{ CustomHelper::SimpleJobPoststatus() }}
                         </a>
                     @endif
+                    
                 </div>
             </div>
         </div>

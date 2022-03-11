@@ -46,7 +46,7 @@
                         </span>
                     </div>
                     <div class="media-body col-xl-6">
-                        <h3 class="mb-0 text-black"><span class="counter ml-0 fs-2 fw-medium align-middle">{{ $jobs->count() * 10}}$</span></h3>
+                        <h3 class="mb-0 text-black"><span class="counter ml-0 fs-2 fw-medium align-middle">{{ $revenue->count() * 10}}$</span></h3>
                         <p class="mb-2 fs-5 mx-auto my-auto">Total Revenue</p>
                     </div>
                 </div>
@@ -106,7 +106,7 @@
                         </span>
                     </div>
                     <div class="media-body col-xl-7">
-                        <h3 class="mb-0 text-black"><span class="counter ml-0 fs-5 fw-medium align-middle">{{$commoncity[0]->location_city}}</span></h3>
+                    <h3 class="mb-0 text-black"><span class="counter ml-0 fs-4 fw-medium align-middle">{{ count($commoncity) ? $commoncity[0]->location_city: ''  }}</span></h3>
                         <p class="mb-2 fs-5 mx-auto my-auto">Top Cities Selling</p>
                     </div>
                 </div>
@@ -127,8 +127,8 @@
                                 <th class="align-middle">Job Title</th>
                                 <th class="align-middle">Job Location</th>
                                 <th class="align-middle">Job Type</th>
-                                <th class="align-middle">currency</th>
-                                <th class="align-middle">price</th>
+                                <th class="align-middle">Currency</th>
+                                <th class="align-middle">Price</th>
                                 <th class="align-middle">Transaction Time</th>
                             </tr>
                         </thead>
@@ -137,10 +137,10 @@
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
                                     <td>{{ $transaction->title }}</td>
-                                    <td>{{ $transaction->location }}</td>
-                                    <td>{{ $transaction->job_type }}</td>
-                                    <td>{{ $transaction->currency }}</td>
-                                    <td>{{ $transaction->price }} </td>
+                                    <td>{{ str_replace('_',' ', ucwords($transaction->location, "_")) }}</td>
+                                    <td>{{ str_replace('_',' ', ucwords($transaction->job_type, "_")) }}</td>
+                                    <td>{{ strtoupper($transaction->currency) }}</td>
+                                    <td>${{ ($transaction->price)/100 }} </td>
                                     <td>{{ $transaction->created_at }}</td>
                                 </tr>
                             @endforeach

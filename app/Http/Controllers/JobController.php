@@ -6,10 +6,10 @@ use App\Helpers\CustomHelper;
 use App\Models\Company;
 use App\Models\Job;
 use Illuminate\Http\Request;
+use Stripe;
 use App\Services\Job\JobService;
 use App\Services\Company\CompanyService;
 use App\Services\Category\CategoryService;
-use Stripe;
 
 class JobController extends Controller {
     
@@ -91,18 +91,17 @@ class JobController extends Controller {
             if($jobname === $name){
                 $get_id = $applyjob->id;
                 $jobDetails = $this->jobService->find($get_id);
-                     if(!empty($jobDetails)) {
-                         $data               = [];
-                         $data['categories'] = $this->categoryService->findAll();
-                         $data['jobData']    = $jobDetails;
-                         $data['code']       = $get_id;
-                         return view('jobs.detail', $data);
-                     }  
-                     abort(404);
+                if(!empty($jobDetails)) {
+                    $data               = [];
+                    $data['categories'] = $this->categoryService->findAll();
+                    $data['jobData']    = $jobDetails;
+                    $data['code']       = $get_id;
+                    return view('jobs.detail', $data);
+                }
+                abort(404);
             }
         }
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -110,7 +109,8 @@ class JobController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    
+    {    
         $request->validate([
             'jobTitle'                  =>  'required|max:255',
             'jobCategory'               =>  'required',
@@ -166,7 +166,6 @@ class JobController extends Controller {
 
 
         $response = $this->jobService->create($request);
-
         return redirect('preview-job/'.\CustomHelper::createJobUrl($response['id'], $company['id']));
     }
 
@@ -254,24 +253,25 @@ class JobController extends Controller {
         if(isset($request->job_id)) {
 			$jobDetails = $this->jobService->find($request->job_id);
             if(!empty($jobDetails)) {
+
 				// update payment log and mark status=1 as paid
 				$this->jobService->updatePaymentLogStatusByJobId($request->job_id, 1);
 
 				// update job status as completed
 				$this->jobService->updateJobCreationStepById($request->job_id, 2);
-				
+
 				// send email
-                try { 
-                    $data = $request;
-                    $data['subject'] = 'Job Posting';
-                    $data['jobUrl']  = url('/post-a-job/'. \CustomHelper::createJobUrl($request->job_id, $jobDetails->company->id));
-                    \CustomHelper::sendEmail([
-                        'subject'   => $data['subject'],
-                        'to'        => 'hassanmehmood6195@gmail.com',
-                        'htmlBody'  => view('email.create-job', $data)->render(),
-                    ]);
-                } catch(Exception $ex) {    
-                }
+                // try { 
+                //     $data = $request;
+                //     $data['subject'] = 'Job Posting';
+                //     $data['jobUrl']  = url('/post-a-job/'. \CustomHelper::createJobUrl($request->job_id, $jobDetails->company->id));
+                //     \CustomHelper::sendEmail([
+                //         'subject'   => $data['subject'],
+                //         'to'        => 'hassanmehmood6195@gmail.com',
+                //         'htmlBody'  => view('email.create-job', $data)->render(),
+                //     ]);
+                // } catch(Exception $ex) {    
+                // }
 
                 return redirect('post-a-job')->with('payment_done', 'Payment has been successfully completed.');
 			}

@@ -19,25 +19,38 @@ class CompanyController extends Controller
      *  @return void
      */
     public function __construct(CompanyService $companyService, JobService $jobService){
+        
         $this->companyService = $companyService;
         $this->jobService = $jobService;
     }
 
     public function showAllCompanies()
-    {   
-        $companies = [];
+    {   $companies = [];
         return view('company.listing', [
             'companies' => $this->companyService->findAllPaginate()
         ]);
     }
 
     public function showCompany($name) {
-        $companies = Company::all();
-        foreach ($companies as $company) {
-            if($company->slug === $name) {
-                return view('company.jobs', ['company' => $company, 'jobs'=> $company->jobs]);
-            }
+    //  $namegroup = Company::select('id','name')->get();
+    //     foreach($namegroup as $onearray) {
+    //         $namecom = $onearray->name;
+    //         $reult = str_replace(' ','-', strtolower($namecom));
+    //         if($reult === $name) {
+    //          $sdfid = $onearray->id; 
+    //         }
+    //     };
+    //   $company = $this->companyService->find($sdfid);
+    //   $jobs = $company->jobs;
+    // //   echo $jobs;
+    //   return view('company.jobs', ['company' => $company, 'jobs'=> $jobs]);
+    // }
+    $companies = Company::all();
+    foreach ($companies as $company) {
+        if($company->slug === $name) {
+            return view('company.jobs', ['company' => $company, 'jobs'=> $company->jobs]);
         }
         abort(404);
     }
+}
 }
