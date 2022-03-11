@@ -44,7 +44,7 @@
         .mobile-foottp{
             display: none;
         }
-        @media only screen and (max-width: 600px) {
+        @media only screen and (max-width: 991px) {
             .mobile-foottp{
                 background: url(../../assets/bttim_mobile.jpg);
                 min-height: 300px;
