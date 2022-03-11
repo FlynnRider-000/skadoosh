@@ -1,5 +1,5 @@
 <div class="row justify-content-md-center  ">
-<div class="col col-lg-8 mainhgg">
+<div class="col col-lg-8 mainhgg order-last order-lg-first">
 
 
     <div class="col col-lg-12">
@@ -37,7 +37,7 @@
     </div>
     </div>
 
-<div class="col-xl-4 col-lg-4">
+<div class="col-xl-4 col-lg-4 order-first order-lg-last">
     <div class="post-details3  mb-50">
         <div class="company-img company-img-details">
             @if(isset($jobData->company) && $jobData->company->logo)

@@ -174,11 +174,12 @@
 
 .job-tittle span:nth-of-type(2){
     background: #29A387;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 300;
     color: #FFF;
     border-radius: 4px;
-    padding: 2px 5px;
+    padding: 5px 10px;
+    margin-left: 10px;
 }
 
 
@@ -188,7 +189,7 @@
     margin-bottom: 0px;
 }
 .job-tittle span:nth-of-type(4){
-    color: #000;
+    color: #2E3B56;
     font-size: 16px;
     margin-bottom: 1px;
 }

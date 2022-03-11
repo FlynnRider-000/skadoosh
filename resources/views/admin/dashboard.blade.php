@@ -142,7 +142,6 @@
                                     <td>{{ strtoupper($transaction->currency) }}</td>
                                     <td>${{ ($transaction->price)/100 }} </td>
                                     <td>{{ $transaction->created_at }}</td>
-                                    
                                 </tr>
                             @endforeach
                         </tbody>

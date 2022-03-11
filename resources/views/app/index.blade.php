@@ -96,7 +96,7 @@
                     </h3>
                     <div class="row logos h-25">
                     @foreach ($companies as $company)
-                        <div class="col-sm-2"> 
+                        <div class="col-sm-2 col-6"> 
                             <a href="{{ $company->website }}" target="__blank">     
                                 <img class="img-fluid" src="{{ asset(env('COMPANY_IMAGE_PATH').'/'.$company->logo) }}" alt="{{ $company->name }}" />
                             </a>

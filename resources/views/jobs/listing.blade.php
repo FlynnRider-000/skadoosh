@@ -75,7 +75,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-xs-12 col-lg-5 col-md-6">
+            <div class="col-xs-12 col-xl-5">
                 <!-- Featured_job_start -->
                 <section class="featured-job-area newar">
                     <div class="container">
@@ -88,7 +88,7 @@
                 </section>
                 <!-- Featured_job_end -->
             </div>
-            <div class="col-xs-7 col-lg-7 col-md-6">
+            <div class="col-xs-7 col-xl-7 col-lg-12">
 				 <div class="job-post-company">
                     <div class="container">
                         <div class="row singleJobListingDetail">
@@ -165,8 +165,7 @@ a {
     color: #2E3B56;
     font-size: 18px;
     font-weight: 400;
-    line-height: 1.5em;
-    font-family: 'Roboto', sans-serif;
+    line-height: 1.5em;    
 }
 .job-post-details p {
     color: #2E3B56;
@@ -210,8 +209,7 @@ p, span {
     font-size: 16px;
     line-height: 30px;
     margin-bottom: 16px;
-    font-weight: 300;
-    font-family: 'Roboto';
+    font-weight: 300;    
 }
 </style>
 @endsection

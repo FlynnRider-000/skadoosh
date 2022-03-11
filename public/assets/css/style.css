@@ -529,8 +529,7 @@ body {
     color: #9C9FBE;
 }
 
-.mainhg .job-tittle h4{
-    font-family: 'Urbanist', sans-serif;
+.mainhg .job-tittle h4{    
     font-weight: 400;
     font-size: 16px;
     color: #666;
@@ -693,7 +692,7 @@ h3,
 h4,
 h5,
 h6 {
-    color: #0b1c39;
+    color: #2E3B56;
     margin-top: 0px;
     font-style: normal;
     font-weight: 500;
@@ -714,8 +713,7 @@ p ,span{
     color: #506172;
     font-size: 16px;
     line-height: 30px;
-    margin-bottom: 15px;
-    font-weight: normal;
+    margin-bottom: 15px;    
 }
 .header-area{
     min-height: 90px;
@@ -1013,11 +1011,8 @@ li {
     display: none;
 }
 .sidecnt p,span{
-    color: #000;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 1.5em;
-    font-family: 'Urbanist', sans-serif;
+    color: #2E3B56;    
+    line-height: 1.5em;    
 }
 .sidecnt{
     padding: 0% 12% 0% 12%;
@@ -2817,7 +2812,7 @@ hr {
 }
 @media (max-width: 767px) {
     .feature-padding {
-        padding-top: 70px;
+        padding-top: 40px;
         padding-bottom: 0;
     }
     .form-group h4{
@@ -2991,7 +2986,7 @@ hr {
         font-size: 25px;
         line-height: 1.4;
         margin-bottom: 0;
-        text-align: center;
+        text-align: left;
         margin-top: 0;
     }
     .riff h3 br{
@@ -3001,8 +2996,7 @@ hr {
         justify-content: center !important;
     }
     .section-tittle{
-        margin-bottom: 20px;
-        text-align: center !important;
+        margin-bottom: 20px;        
     }
     .single-job-items .job-items{
         width:100%;
@@ -7222,9 +7216,11 @@ footer {
 }
 .post-details2 ul {
     padding-left: 30px;
+    margin-bottom: 15px
 }
 .post-details2 ul li {
     list-style-type: circle;
+    font-size: 16px;
 }
 .post-details3 {
 
@@ -7634,6 +7630,28 @@ footer {
     font-style: italic;
 }
 
+.job-tittle h4 {
+    font-family: 'Roboto', sans-serif;
+}
+
+.mainhgg .job-tittle {
+    margin-bottom: 15px;
+}
+
+@media (max-width: 1199px) {
+    .single-job-items .job-items {
+        width: 100%;
+        min-width: 100%;
+    }
+    .single-job-items {
+        float: none;
+    }
+    .mainhg {
+        margin-right: 15px;
+        margin-left: 15px;
+    }
+}
+
 @media (max-width: 991px) {
     .main-hero {
         background-size: 80%;
@@ -7641,6 +7659,22 @@ footer {
     }
     .header-area .slicknav_btn {
         top: -45px;
+    }
+    .mainhg {
+        margin-right: 20px;
+        margin-left: 20px;
+    }
+    .single-job-items {
+        padding: 0px 7px
+    }
+    .job-post-company.yhy {
+        padding-top: 0px !important;
+    }
+    .post-details3 {
+        margin-left: 0px;
+    }
+    .mainhgg {
+        margin: 0 15px;
     }
 }
 
@@ -7669,6 +7703,9 @@ footer {
     }
     .header-area .slicknav_btn {
         top: -40px;
+    }
+    .single-job-items {
+        padding: 0px 0px
     }
 }
 
