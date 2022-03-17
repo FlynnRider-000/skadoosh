@@ -112,29 +112,19 @@
                             <h4>First, tell us about the role</h4>
                                     <h6 class="border-0">Please be as accurate as you can so we can help drive relevant candidates</h6>
                         </div>
-
+                        
                         <div class="jobSection" >
                             <div class="form-group">
                                 <label for="jobTitle" class="control-label">Title <span class="red">*</span></label>
-                                <span class="sublabel">Use the job title. Titles must describe the role
-                        </span>
-                                <input type="text" class="form-control" name="jobTitle" placeholder="e.g. Senior Content Strategist" @if(isset($jobData->title) && $jobData->title) value="{{ $jobData->title }}" @endif>
+                                <span class="sublabel">Use the job title. Titles must describe the role</span>
+                                <input type="text" class="form-control" name="jobTitle" required placeholder="e.g. Senior Content Strategist" value="{{ old('jobTitle') }}" @if(isset($jobData->title) && $jobData->title) value="{{ $jobData->title }}" @endif>
                             </div>
-
                             <div class="form-group">
                                 <label for="jobCategory">Category <span class="red">*</span></label>
                                 <span class="sublabel">Choose category that matches the position best</span>
-                                {{-- <select name="jobCategory" class="form-control">
-                                    @if(!empty($categories))
-                                        @foreach($categories as $category)
-                                            <option value="{{ $category->id }}" @if(isset($jobData->category_id) && $jobData->category_id == $category->id) selected="selected" @endif>{{ $category->name }}</option>
-                                        @endforeach
-                                    @endif
-                                </select> --}}
                                 @if(!empty($categories))
                                     @foreach($categories as $key => $category)
-                                        <div class="radio
-                                @if(isset($jobData->category_id) && $jobData->category_id == $category->id) active @endif">
+                                        <div class="radio @if(isset($jobData->category_id) && $jobData->category_id == $category->id) active @endif" required>
                                             <input id="input_{{ $key }}" type="radio" name="jobCategory" value="{{ $category->id }}" @if(isset($jobData->category_id) && $jobData->category_id == $category->id) checked="checked" @endif>
                                             <label for ="input_{{ $key }}" class="mt-0 mb-0" style="font-size: 15px;">{{ $category->name }}</label>
                                         </div>
@@ -180,13 +170,13 @@
 
                             <div class="form-group jobOfficeLocationDiv" @if(isset($jobData->location) && $jobData->location == 'office') @else style="display: none;" @endif>
                                 <label for="jobOfficeLocationCity" class="control-label">Office location <span class="red">*</span></label>
-                                <input type="text" class="form-control" name="jobOfficeLocationCity" placeholder="e.g. New York City" @if(isset($jobData->location) && $jobData->location == 'office' && isset($jobData->location_city) && $jobData->location_city) value="{{ $jobData->location_city }}" @endif>
+                                <input type="text" class="form-control" name="jobOfficeLocationCityName" placeholder="e.g. New York City" @if(isset($jobData->location) && $jobData->location == 'office' && isset($jobData->location_city) && $jobData->location_city) value="{{ $jobData->location_city }}" @endif>
                                 <input type="text" class="form-control" name="jobOfficeLocationState" placeholder="e.g. New York" @if(isset($jobData->location) && $jobData->location == 'office' && isset($jobData->location_state) && $jobData->location_state) value="{{ $jobData->location_state }}" @endif>
                             </div>
 
                             <div class="form-group jobRegionalRestrictionDiv" @if(isset($jobData->location) && $jobData->location == 'remote_region') @else style="display: none;" @endif>
                                 <label for="jobRegionalRestriction" class="control-label">Regional Restrictions *</label>
-                                <input type="text" class="form-control" name="jobRegionalRestriction" placeholder="e.g. Must live in US, or Must be in GMT +/-2" @if(isset($jobData->location) && $jobData->location == 'remote_region' && isset($jobData->region_restriction) && $jobData->region_restriction) value="{{ $jobData->region_restriction }}" @endif>
+                                <input type="text" value="{{ old('jobRegionalRestriction') }}" class="form-control" name="jobRegionalRestriction" placeholder="e.g. Must live in US, or Must be in GMT +/-2" @if(isset($jobData->location) && $jobData->location == 'remote_region' && isset($jobData->region_restriction) && $jobData->region_restriction) value="{{ $jobData->region_restriction }}" @endif>
                             </div>
 
                             <div class="form-group">
@@ -197,25 +187,25 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-sm-2">
-                                        <select class="form-control" name="jobSalaryCurrency">
+                                        <select class="form-control" name="jobSalaryCurrency" required>
                                             @if(!empty(\Config::get('constants.jobSalaryCurrency')))
                                                 @foreach(\Config::get('constants.jobSalaryCurrency') as $key => $value)
-                                                    <option value="{{ $key }}" @if(isset($jobData->salary) && $jobData->salary->currency_type == $key) selected="selected" @endif>{{ $value }}</option>
+                                                    <option value="{{ $key }}" {{ old('jobSalaryCurrency') == $key ? "selected" : "" }} @if(isset($jobData->salary) && $jobData->salary->currency_type == $key) selected="selected" @endif>{{ $value }}</option>
                                                 @endforeach
                                             @endif
                                         </select>
                                     </div>
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" name="jobSalaryFrom" placeholder="From" @if(isset($jobData->salary) && $jobData->salary->range_from) value="{{ $jobData->salary->range_from }}" @endif>
+                                        <input type="text" value="{{ old('jobSalaryFrom') }}" class="form-control" name="jobSalaryFrom" placeholder="From" @if(isset($jobData->salary) && $jobData->salary->range_from) value="{{ $jobData->salary->range_from }}" @endif>
                                     </div>
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" name="jobSalaryTo" placeholder="To" @if(isset($jobData->salary) && $jobData->salary->range_to) value="{{ $jobData->salary->range_to }}" @endif>
+                                        <input type="text" value="{{ old('jobSalaryTo') }}" class="form-control" name="jobSalaryTo" placeholder="To" @if(isset($jobData->salary) && $jobData->salary->range_to) value="{{ $jobData->salary->range_to }}" @endif>
                                     </div>
                                     <div class="col-sm-2">
-                                        <select class="form-control" name="jobSalaryType">
+                                        <select class="form-control" name="jobSalaryType" required>
                                             @if(!empty(\Config::get('constants.jobSalaryType')))
                                                 @foreach(\Config::get('constants.jobSalaryType') as $key => $value)
-                                                    <option value="{{ $key }}" @if(isset($jobData->salary) && $jobData->salary->rate == $key) selected="selected" @endif>{{ $value }}</option>
+                                                    <option value="{{ $key }}" {{ old('jobSalaryType') == $key ? "selected" : "" }} @if(isset($jobData->salary) && $jobData->salary->rate == $key) selected="selected" @endif>{{ $value }}</option>
                                                 @endforeach
                                             @endif
                                         </select>
@@ -226,14 +216,14 @@
                             <div class="form-group">
                                 <label for="jobApplyLink" class="control-label">How to apply <span class="red">*</span></label>
                                 <span class="sublabel">Please provide a link or email address to where applications should be sent</span>
-                                <input type="text" class="form-control" name="jobApplyLink" placeholder="e.g. https://www.company.com/careers/apply" @if(isset($jobData->apply_link) && $jobData->apply_link) value="{{ $jobData->apply_link }}" @endif>
+                                <input type="text" class="form-control" value="{{ old('jobApplyLink') }}" name="jobApplyLink" required placeholder="e.g. https://www.company.com/careers/apply" @if(isset($jobData->apply_link) && $jobData->apply_link) value="{{ $jobData->apply_link }}" @endif>
                             </div>
 
                             <div class="form-group">
                                 <label for="jobDescription" class="control-label">Job description <span class="red">*</span></label>
                                 <span class="sublabel">Well formatted and easy to read job descriptions will drive more applicants. If you're pasting from another system, please check the formatting of your job description
                         </span>
-                                <textarea class="jobDescriptionEditor" name="jobDescription">@if(isset($jobData->apply_link)) {{ $jobData->description }} @endif</textarea>
+                                <textarea class="jobDescriptionEditor" name="jobDescription">@if(isset($jobData->apply_link)) {{ old('$jobData->description') }} @endif</textarea>
                             </div>
                         </div>
                     </div>
@@ -250,19 +240,13 @@
                             <label for="companyName" class="control-label">Company name <span class="red">*</span></label>
                             <span class="sublabel">Provide your company's name. It'll appear in search results and next to your job listing
                         </span>
-                            <input type="text" class="form-control" name="companyName" placeholder="e.g. Company Ltd." @if(isset($jobData->company) && isset($jobData->company->name) && $jobData->company->name) value="{{ $jobData->company->name }}" @endif>
+                            <input type="text" class="form-control" name="companyName" value="{{ old('companyName') }}" placeholder="e.g. Company Ltd." required @if(isset($jobData->company) && isset($jobData->company->name) && $jobData->company->name) value="{{ $jobData->company->name }}" @endif>
                         </div>
 
                         <div class="form-group">
                             <label for="companyStatement" class="control-label">Company statement</label>
-                            <span class="sublabel">Provide your company's mission statement, or one-liner. It'll appear on your company profile
-
-
-
-
-
-</span>
-                            <input type="text" class="form-control" name="companyStatement" placeholder="e.g. It's our mission to fulfill our vision" @if(isset($jobData->company) && isset($jobData->company->statement) && $jobData->company->statement) value="{{ $jobData->company->statement }}" @endif>
+                            <span class="sublabel">Provide your company's mission statement, or one-liner. It'll appear on your company profile</span>
+                            <input type="text" class="form-control" name="companyStatement" value="{{ old('companyStatement') }}" placeholder="e.g. It's our mission to fulfill our vision" required @if(isset($jobData->company) && isset($jobData->company->statement) && $jobData->company->statement) value="{{ $jobData->company->statement }}" @endif>
                         </div>
 
                         <div class="form-group">
@@ -270,7 +254,7 @@
                             <span class="sublabel">Your company logo will appear next to your job listing and on the job description page itself
 
 </span>
-                            <input type="file" class="form-control" name="companyLogo" >
+                            <input type="file" class="form-control" name="companyLogo" id="companyLogo" required>
                         </div>
 
                         <div class="form-group">
@@ -278,28 +262,28 @@
                             <span class="sublabel">This is where we will email your receipt and send instructions on how to edit the job role
 
 </span>
-                            <input type="text" class="form-control" name="companyEmail" placeholder="e.g. receipts@company.com" @if(isset($jobData->company) && isset($jobData->company->email) && $jobData->company->email) value="{{ $jobData->company->email }}" @endif>
+                            <input type="text" class="form-control" name="companyEmail" value="{{ old('companyEmail') }}" placeholder="e.g. receipts@company.com" required @if(isset($jobData->company) && isset($jobData->company->email) && $jobData->company->email) value="{{ $jobData->company->email }}" @endif>
                         </div>
 
                         <div class="form-group">
                             <label for="companyWebsite" class="control-label">Website address</label>
                             <span class="sublabel">Where should a candidate go to learn more about you?
 </span>
-                            <input type="text" class="form-control" name="companyWebsite" placeholder="e.g. https://www.company.com" @if(isset($jobData->company) && isset($jobData->company->website) && $jobData->company->website) value="{{ $jobData->company->website }}" @endif>
+                            <input type="text" class="form-control" name="companyWebsite" value="{{ old('companyWebsite') }}" placeholder="e.g. https://www.company.com" required @if(isset($jobData->company) && isset($jobData->company->website) && $jobData->company->website) value="{{ $jobData->company->website }}" @endif>
                         </div>
 
                         <div class="form-group">
                             <label for="companyTwitter" class="control-label">Twitter handle</label>
                             <span class="sublabel">What is your Twitter username?
 </span>
-                            <input type="text" class="form-control" name="companyTwitter" placeholder="e.g. @company" @if(isset($jobData->company) && isset($jobData->company->twitter) && $jobData->company->twitter) value="{{ $jobData->company->twitter }}" @endif>
+                            <input type="text" class="form-control" name="companyTwitter" value="{{ old('companyTwitter') }}" placeholder="e.g. @company" required @if(isset($jobData->company) && isset($jobData->company->twitter) && $jobData->company->twitter) value="{{ $jobData->company->twitter }}" @endif>
                         </div>
 
                         <div class="form-group">
                             <label for="companyLocation" class="control-label">Company Location</label>
                             <span class="sublabel">Where is the company headquartered?
 </span>
-                            <input type="text" class="form-control" name="companyLocation" placeholder="e.g. New York City, NY" @if(isset($jobData->company) && isset($jobData->company->location) && $jobData->company->location) value="{{ $jobData->company->location }}" @endif>
+                            <input type="text" class="form-control" name="companyLocation" value="{{ old('companyLocation') }}" placeholder="e.g. New York City, NY" required @if(isset($jobData->company) && isset($jobData->company->location) && $jobData->company->location) value="{{ $jobData->company->location }}" @endif>
                         </div>
 
                         <div class="form-group">
@@ -308,7 +292,7 @@
 
 
 </span>
-                            <textarea class="companyDescriptionEditor" name="companyDescription">@if(isset($jobData->company) && isset($jobData->company->description) && $jobData->company->description) {{ $jobData->company->description }} @endif</textarea>
+                            <textarea class="companyDescriptionEditor" name="companyDescription">@if(isset($jobData->company) && isset($jobData->company->description) && $jobData->company->description) {{ ('$jobData->company->description') }} @endif</textarea>
                         </div>
                     </div>
                     </div>
@@ -483,3 +467,4 @@
     </script>
 
 @endsection
+

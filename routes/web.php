@@ -42,10 +42,12 @@ Route::get('/companies/{name}', [App\Http\Controllers\CompanyController::class, 
 
 Route::prefix('admin')->group(function(){
     Route::get('dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
-    Route::resource('category', CategoryController::class)->middleware(['auth'])->except(['show']);
-    Route::resource('job', AdminJobController::class)->middleware(['auth'])->except(['show']);
+    Route::resource('category', App\Http\Controllers\CategoryController::class)->middleware(['auth'])->except(['show']);
+    Route::resource('job', App\Http\Controllers\AdminJobController::class)->middleware(['auth'])->except(['show']);
+    Route::resource('company', App\Http\Controllers\AdminCompanyController::class)->middleware(['auth'])->except(['show']);
     Route::get('load-categories', [App\Http\Controllers\CategoryController::class, 'loadCategories'])->middleware(['auth'])->name("admin.load-categories");
     Route::get('load-jobs', [App\Http\Controllers\AdminJobController::class, 'loadJobs'])->middleware(['auth'])->name("admin.load-jobs");
+    Route::get('load-companies', [App\Http\Controllers\AdminCompanyController::class, 'loadCompanies'])->middleware(['auth'])->name("admin.load-companies");
     Route::post('make-premium', [App\Http\Controllers\AdminJobController::class, 'makePremium'])->middleware(['auth']);
     Route::post('remove-premium', [App\Http\Controllers\AdminJobController::class, 'removePremium'])->middleware(['auth']);
 });

@@ -195,6 +195,17 @@
                     </ul>
                 </li>
 
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-world"></i>
+                        <span key="t-tasks">Companies</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ url('admin/company') }}" key="t-task-list">Companies List</a></li>
+                        <li><a href="{{ url('admin/company/create') }}" key="t-create-task">Add New</a></li>
+                    </ul>
+                </li>
+
                 <!--
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">

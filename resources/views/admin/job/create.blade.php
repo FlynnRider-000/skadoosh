@@ -1,8 +1,6 @@
 @extends('layouts.backend.master')
 @section('title') Job | Create @endsection
-@section('css')
-    
-@endsection
+
 
 @section('content')
 @component('components.breadcrumb')
@@ -20,13 +18,8 @@
                             <div class="mb-3">
                                 <label for="jobTitle" class="form-label">Title <span class="text-danger">*</span></label>
                                 <input type="text" name="jobTitle" value="{{ old('jobTitle') }}" class="form-control" id="jobTitle" placeholder="Job Title"
-                                    required>
-                                <div class="valid-feedback">
-                                    Looks good!
-                                </div>
-                                <div class="invalid-feedback">
-                                    Please enter a job title.
-                                </div>                                
+                                  required  >
+                                                  
                             </div>
                         </div>
                         <div class="col-md-6">

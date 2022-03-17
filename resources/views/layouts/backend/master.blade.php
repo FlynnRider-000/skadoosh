@@ -42,6 +42,8 @@
     <!-- /Right-bar -->
 
     <!-- JAVASCRIPT -->
+    <script src="{{ URL::asset('/admin_assets/js/pages/form-validation.init.js') }}"></script>
+    <script src="{{ URL::asset('/admin_assets/js/pages/form-editor.init.js') }}"></script>
     @include('layouts.backend.vendor-scripts')
 </body>
 
