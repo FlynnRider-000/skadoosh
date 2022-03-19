@@ -359,7 +359,7 @@
     <script src="{{ URL::asset('/admin_assets/libs/tinymce/tinymce.min.js') }}"></script>
 
     <!-- init js -->
-    <!-- <script src="{{ URL::asset('/admin_assets/js/pages/form-validation.init.js') }}"></script> -->
+    <script src="{{ URL::asset('/admin_assets/js/pages/form-validation.init.js') }}"></script>
     <script src="{{ URL::asset('/admin_assets/js/pages/form-editor.init.js') }}"></script>
     @include('admin.job.script')
 @endsection
