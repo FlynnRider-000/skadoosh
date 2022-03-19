@@ -98,7 +98,7 @@
     <div class="job-post-company pb-20 main-herofrm jbdet newform">
         <div class="container">
             <div class="formnew" >
-                <form action="{{ url('/post-a-job') }}" role="form" method="post" enctype="multipart/form-data">
+                <form class="needs-validation" action="{{ url('/post-a-job') }}" role="form" method="post" enctype="multipart/form-data">
                     <input type="hidden" class="intialJobPrice" value="{{ CustomHelper::getSimpleJobPostCost() }}">
                     <input type="hidden" class="additionalJobPrice" value="{{ CustomHelper::getPremiumJobPostCost() }}">
                     <input type="hidden" name="job_id" value="{{ $jobId }}">
@@ -229,11 +229,9 @@
                     </div>
 
                     <div class="mt-5 mb-5" style="padding-top: 15px;border:1px solid #DCDCDC;border-radius: 10px;">
-
                         <div class="form-group text-center" style="border-bottom: 1px solid #DCDCDC;">
                             <h4>Now, a little bit about the company</h4>
-                                    <h6 class="border-0">Please be as accurate as you can so we can help drive relevant candidates</h6>
-
+                            <h6 class="border-0">Please be as accurate as you can so we can help drive relevant candidates</h6>
                         </div>
                         <div class="jobSection companypart">
                         <div class="form-group">
@@ -251,47 +249,37 @@
 
                         <div class="form-group">
                             <label for="companyLogo" class="control-label">Company logo</label>
-                            <span class="sublabel">Your company logo will appear next to your job listing and on the job description page itself
-
-</span>
+                            <span class="sublabel">Your company logo will appear next to your job listing and on the job description page itself</span>
                             <input type="file" class="form-control" name="companyLogo" id="companyLogo" required>
                         </div>
 
                         <div class="form-group">
                             <label for="companyEmail" class="control-label">Your contact email <span class="red">*</span></label>
-                            <span class="sublabel">This is where we will email your receipt and send instructions on how to edit the job role
-
-</span>
+                            <span class="sublabel">This is where we will email your receipt and send instructions on how to edit the job role</span>
                             <input type="text" class="form-control" name="companyEmail" value="{{ old('companyEmail') }}" placeholder="e.g. receipts@company.com" required @if(isset($jobData->company) && isset($jobData->company->email) && $jobData->company->email) value="{{ $jobData->company->email }}" @endif>
                         </div>
 
                         <div class="form-group">
                             <label for="companyWebsite" class="control-label">Website address</label>
-                            <span class="sublabel">Where should a candidate go to learn more about you?
-</span>
+                            <span class="sublabel">Where should a candidate go to learn more about you?</span>
                             <input type="text" class="form-control" name="companyWebsite" value="{{ old('companyWebsite') }}" placeholder="e.g. https://www.company.com" required @if(isset($jobData->company) && isset($jobData->company->website) && $jobData->company->website) value="{{ $jobData->company->website }}" @endif>
                         </div>
 
                         <div class="form-group">
                             <label for="companyTwitter" class="control-label">Twitter handle</label>
-                            <span class="sublabel">What is your Twitter username?
-</span>
+                            <span class="sublabel">What is your Twitter username?</span>
                             <input type="text" class="form-control" name="companyTwitter" value="{{ old('companyTwitter') }}" placeholder="e.g. @company" required @if(isset($jobData->company) && isset($jobData->company->twitter) && $jobData->company->twitter) value="{{ $jobData->company->twitter }}" @endif>
                         </div>
 
                         <div class="form-group">
                             <label for="companyLocation" class="control-label">Company Location</label>
-                            <span class="sublabel">Where is the company headquartered?
-</span>
+                            <span class="sublabel">Where is the company headquartered?</span>
                             <input type="text" class="form-control" name="companyLocation" value="{{ old('companyLocation') }}" placeholder="e.g. New York City, NY" required @if(isset($jobData->company) && isset($jobData->company->location) && $jobData->company->location) value="{{ $jobData->company->location }}" @endif>
                         </div>
 
                         <div class="form-group">
                             <label for="companyDescription" class="control-label">Company Description <span class="red">*</span></label>
-                            <span class="sublabel">Provide a longer description about your company to help a candidate understand what you do in more detail
-
-
-</span>
+                            <span class="sublabel">Provide a longer description about your company to help a candidate understand what you do in more detail</span>
                             <textarea class="companyDescriptionEditor" name="companyDescription">@if(isset($jobData->company) && isset($jobData->company->description) && $jobData->company->description) {{ ('$jobData->company->description') }} @endif</textarea>
                         </div>
                     </div>
@@ -413,8 +401,14 @@
         </div>
     </div>
 
+    <script src="{{ URL::asset('/admin_assets/libs/parsleyjs/parsleyjs.min.js') }}"></script>
+    <!--tinymce js-->
+    <script src="{{ URL::asset('/admin_assets/libs/tinymce/tinymce.min.js') }}"></script>
 
-
+    <!-- init js -->
+    <script src="{{ URL::asset('/admin_assets/js/pages/form-validation.init.js') }}"></script>
+    <script src="{{ URL::asset('/admin_assets/js/pages/form-editor.init.js') }}"></script>
+    
     <script type="text/javascript">
         $(document).on('ready', function() {
             @if(session('payment_done'))

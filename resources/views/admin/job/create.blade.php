@@ -18,14 +18,20 @@
                             <div class="mb-3">
                                 <label for="jobTitle" class="form-label">Title <span class="text-danger">*</span></label>
                                 <input type="text" name="jobTitle" value="{{ old('jobTitle') }}" class="form-control" id="jobTitle" placeholder="Job Title"
-                                  required  >
-                                                  
+                                  required>
+                                <div class="valid-feedback">
+                                        Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please enter a job title
+                                </div>                 
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="jobCategory" class="form-label">Category <span class="text-danger">*</span></label>
                                 <select class="form-select" name="jobCategory" id="jobCategory" required>
+                                    <option disabled selected></option>
                                     @if(!empty($categories))
                                         @foreach($categories as $category)
                                             <option value="{{ $category->id }}" {{ old('jobCategory') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
@@ -353,7 +359,7 @@
     <script src="{{ URL::asset('/admin_assets/libs/tinymce/tinymce.min.js') }}"></script>
 
     <!-- init js -->
-    <script src="{{ URL::asset('/admin_assets/js/pages/form-validation.init.js') }}"></script>
+    <!-- <script src="{{ URL::asset('/admin_assets/js/pages/form-validation.init.js') }}"></script> -->
     <script src="{{ URL::asset('/admin_assets/js/pages/form-editor.init.js') }}"></script>
     @include('admin.job.script')
 @endsection

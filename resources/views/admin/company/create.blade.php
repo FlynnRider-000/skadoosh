@@ -1,9 +1,5 @@
 @extends('layouts.backend.master')
 @section('title') Company | Create @endsection
-@section('css')
-    
-@endsection
-
 @section('content')
 @component('components.breadcrumb')
 @slot('li_1') Companies @endslot
@@ -143,5 +139,5 @@
 
     <!-- init js -->
     <script src="{{ URL::asset('/admin_assets/js/pages/form-validation.init.js') }}"></script>
-    <script src="{{ URL::asset('/admin_assets/js/pages/form-editor.init.js') }}"></script>
+    <script src="{{ URL::asset('/admin_assets/js/pag/es/form-editor.init.js') }}"></script>
 @endsection

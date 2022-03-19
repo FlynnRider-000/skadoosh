@@ -118,7 +118,8 @@ class AdminCompanyController extends Controller
             'companyName'       => 'required',
             'companyLogo'       =>  ($request->hasFile('companyLogo')) ? 'image|mimes:jpeg,png,jpg,gif,svg' : 'nullable',
             'companyWebsite'    =>  'nullable|url',
-            'companyEmail'      =>  'required|email:rfc,dns'
+            'companyEmail'      =>  'required|email:rfc,dns',
+            'companyLogo'       =>  ($request->hasFile('companyLogo')) ? 'image|mimes:jpeg,png,jpg,gif,svg' : 'nullable',
         ]);
 
         //if validator fails
