@@ -139,5 +139,5 @@
 
     <!-- init js -->
     <script src="{{ URL::asset('/admin_assets/js/pages/form-validation.init.js') }}"></script>
-    <script src="{{ URL::asset('/admin_assets/js/pag/es/form-editor.init.js') }}"></script>
+    <script src="{{ URL::asset('/admin_assets/js/pages/form-editor.init.js') }}"></script>
 @endsection
