@@ -4,8 +4,8 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-// use App\Console\Commands\sendDailyJobsEmails;
-// use App\Console\Commands\sendWeeklyJobsEmails;
+use App\Console\Commands\sendDailyJobsEmails;
+use App\Console\Commands\sendWeeklyJobsEmails;
 class Kernel extends ConsoleKernel
 {
     /**
@@ -14,8 +14,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        // sendDailyJobsEmails::class,
-        // sendWeeklyJobsEmails::class
+        sendDailyJobsEmails::class,
+        sendWeeklyJobsEmails::class
     ];
 
     /**
