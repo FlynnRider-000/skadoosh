@@ -32,25 +32,24 @@ class CompanyController extends Controller
     }
 
     public function showCompany($name) {
-    //  $namegroup = Company::select('id','name')->get();
-    //     foreach($namegroup as $onearray) {
-    //         $namecom = $onearray->name;
-    //         $reult = str_replace(' ','-', strtolower($namecom));
-    //         if($reult === $name) {
-    //          $sdfid = $onearray->id; 
-    //         }
-    //     };
-    //   $company = $this->companyService->find($sdfid);
-    //   $jobs = $company->jobs;
-    // //   echo $jobs;
-    //   return view('company.jobs', ['company' => $company, 'jobs'=> $jobs]);
-    // }
-    $companies = Company::all();
-    foreach ($companies as $company) {
-        if($company->slug === $name) {
-            return view('company.jobs', ['company' => $company, 'jobs'=> $company->jobs]);
-        }
-        abort(404);
+     $namegroup = Company::select('id','name')->get();
+        foreach($namegroup as $onearray) {
+            $namecom = $onearray->name;
+            $reult = str_replace(' ','-', strtolower($namecom));
+            if($reult === $name) {
+             $unique_id = $onearray->id; 
+            }
+        };
+      $company = $this->companyService->find($unique_id);
+      $jobs = $company->jobs;
+    //   echo $jobs;
+      return view('company.jobs', ['company' => $company, 'jobs'=> $jobs]);
     }
-}
+    // $companies = Company::all();
+    // foreach ($companies as $company) {
+    //     if($company->slug === $name) {
+    //         return view('company.jobs', ['company' => $company, 'jobs'=> $company->jobs]);
+    //     }
+    //     abort(404);
+    // }
 }
