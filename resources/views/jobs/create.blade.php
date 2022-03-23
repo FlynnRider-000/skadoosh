@@ -98,7 +98,7 @@
     <div class="job-post-company pb-20 main-herofrm jbdet newform">
         <div class="container">
             <div class="formnew" >
-                <form class="needs-validation" novalidate action="{{ url('/post-a-job') }}" role="form" id="formdata" method="post" enctype="multipart/form-data">
+                <form class="needs-validation" novalidate action="{{ url('/post-a-job') }}" role="form" method="post" enctype="multipart/form-data">
                     <input type="hidden" class="intialJobPrice" value="{{ CustomHelper::getSimpleJobPostCost() }}">
                     <input type="hidden" class="additionalJobPrice" value="{{ CustomHelper::getPremiumJobPostCost() }}">
                     <input type="hidden" name="job_id" value="{{ $jobId }}">
@@ -117,7 +117,7 @@
                             <div class="form-group mb-2">
                                 <label for="jobTitle" class="control-label">Title <span class="red">*</span></label>
                                 <span class="sublabel">Use the job title. Titles must describe the role</span>
-                                <input type="text" class="form-control" id="validationCustom01" name="jobTitle" required placeholder="e.g. Senior Content Strategist" value="{{ old('jobTitle') }}" @if(isset($jobData->title) && $jobData->title) value="{{ $jobData->title }}" @endif>
+                                <input type="text" class="form-control" name="jobTitle" required placeholder="e.g. Senior Content Strategist" value="{{ old('jobTitle') }}" @if(isset($jobData->title) && $jobData->title) value="{{ $jobData->title }}" @endif>
                                 <div class="valid-feedback" >
                                     Looks good!
                                 </div>
@@ -158,14 +158,13 @@
                                 <span class="sublabel">Choose your target position</span>
                             </div>
 
-                            <div class="form-group mb-2">
+                            <div class="form-group">
                                 <div class="radio @if(isset($jobData->location) && $jobData->location == 'office') active @endif">
                                     <input type="radio" id="input_location" name="jobLocation" value="office" @if(isset($jobData->location) && $jobData->location == 'office') checked="checked" @endif>
                                     <label for ="input_location" class="mt-0 mb-0" style="font-size: 15px;"> Location based (in office)</label>
                                 </div>
-                                
                                 <div class="radio @if(isset($jobData->location) && $jobData->location == 'remote_anywhere') active @endif">
-                                    <input type="radio" id="input_remote" name="jobLocation" value="remote_anywhere" @if(isset($jobData->location) && $jobData->location == 'remote_anywhere') checked="checked" @endif>
+                                    <input type="radio" id="input_remote" name="jobLocation" checked value="remote_anywhere" @if(isset($jobData->location) && $jobData->location == 'remote_anywhere') checked="checked" @endif>
                                     <label for ="input_remote" class="mt-0 mb-0" style="font-size: 15px;"> Remote (anywhere)</label>
                                 </div>
                                 <div class="radio @if(isset($jobData->location) && $jobData->location == 'remote_region') active @endif">
@@ -174,24 +173,18 @@
                                 </div>
                             </div>
 
-                            <div class="form-group jobOfficeLocationDiv" @if(isset($jobData->location) && $jobData->location == 'office') @else style="display: none;" @endif>
+                            <div class="jobOfficeLocationDiv" @if(isset($jobData->location) && $jobData->location == 'office') @else style="display: none;" @endif>
                                 <label for="jobOfficeLocationCity" class="control-label">Office location <span class="red">*</span></label>
-                                <input type="text" class="form-control" name="jobOfficeLocationCityName" value="{{ old('jobOfficeLocationCityName')}}" placeholder="e.g. New York City" @if(isset($jobData->location) && $jobData->location == 'office' && isset($jobData->location_city) && $jobData->location_city) value="{{ $jobData->location_city }}" @endif>
-                                <input type="text" class="form-control" name="jobOfficeLocationState" value="{{old('jobOfficeLocationState')}}" placeholder="e.g. New York" @if(isset($jobData->location) && $jobData->location == 'office' && isset($jobData->location_state) && $jobData->location_state) value="{{ $jobData->location_state }}" @endif>
-                                <div class="valid-feedback" >
-                                    Looks good!
-                                </div>
-                            </div>
-
-                            <div class="form-group jobRegionalRestrictionDiv">
-                                <label for="jobRegionalRestriction" class="control-label">Regional Restrictions *</label>
-                                <input type="text" value="{{ old('jobRegionalRestriction') }}" class="form-control" name="jobRegionalRestriction"placeholder="e.g. Must live in US, or Must be in GMT +/-2">
-                                <div class="valid-feedback" >
-                                    Looks good!
-                                </div>
+                                <input type="text" name="jobOfficeLocationCityName" value="{{ old('jobOfficeLocationCity') }}" class="form-control" id="jobOfficeLocationCity" placeholder="e.g. New York City" @if(isset($jobData->location) && $jobData->location == 'office' && isset($jobData->location_city) && $jobData->location_city) value="{{ $jobData->location_city }}" @endif>
+                                <input type="text" name="jobOfficeLocationState" value="{{ old('jobOfficeLocationState') }}" class="form-control" id="jobOfficeLocationState" placeholder="e.g. New York" @if(isset($jobData->location) && $jobData->location == 'office' && isset($jobData->location_state) && $jobData->location_state) value="{{ $jobData->location_state }}" @endif>
                                 <div class="invalid-feedback">
-                                    Please Enter a Regional Restrictions.
+                                    Please enter a office Location.
                                 </div>
+                            </div> 
+
+                            <div class="form-group jobRegionalRestrictionDiv" @if(isset($jobData->location) && $jobData->location == 'remote_region') @else style="display: none;" @endif>
+                                <label for="jobRegionalRestriction" class="control-label">Regional Restrictions *</label>
+                                <input type="text" value="{{ old('jobRegionalRestriction') }}" class="form-control is-invalid" name="jobRegionalRestriction"placeholder="e.g. Must live in US, or Must be in GMT +/-2" @if(isset($jobData->location) && $jobData->location == 'remote_region' && isset($jobData->region_restriction) && $jobData->region_restriction) value="{{ $jobData->region_restriction }}" @endif>
                             </div>
 
                             <div class="form-group">
@@ -203,7 +196,7 @@
                                 <div class="row">
                                     <div class="col-sm-2 mb-2">
                                         <select class="form-control" name="jobSalaryCurrency" required>
-                                            <option disabled selected></option>    
+                                            <option disabled value="select" selected></option>    
                                             @if(!empty(\Config::get('constants.jobSalaryCurrency')))
                                                 @foreach(\Config::get('constants.jobSalaryCurrency') as $key => $value)
                                                     <option value="{{ $key }}" {{ old('jobSalaryCurrency') == $key ? "selected" : "" }} @if(isset($jobData->salary) && $jobData->salary->currency_type == $key) selected="selected" @endif>{{ $value }}</option>
@@ -224,7 +217,7 @@
                                         </div>
                                         <div class="invalid-feedback">
                                             Please Enter a Job salary.
-                                        </div> 
+                                        </div>
                                     </div>
                                     <div class="col-sm-4 mb-2">
                                         <input type="text" value="{{ old('jobSalaryTo') }}" class="form-control" name="jobSalaryTo" required placeholder="To" @if(isset($jobData->salary) && $jobData->salary->range_to) value="{{ $jobData->salary->range_to }}" @endif>
@@ -254,7 +247,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group  mb-2">
+                            <div class="form-group mb-2">
                                 <label for="jobApplyLink" class="control-label">How to apply <span class="red">*</span></label>
                                 <span class="sublabel">Please provide a link or email address to where applications should be sent</span>
                                 <input type="text" class="form-control" value="{{ old('jobApplyLink') }}" name="jobApplyLink" required placeholder="e.g. https://www.company.com/careers/apply" @if(isset($jobData->apply_link) && $jobData->apply_link) value="{{ $jobData->apply_link }}" @endif>
@@ -266,12 +259,12 @@
                                 </div> 
                                 </div>
 
-                            <div class="form-group  mb-2">
+                            <div class="form-group mb-2">
                                 <label for="jobDescription" class="control-label">Job description <span class="red">*</span></label>
                                 <span class="sublabel">Well formatted and easy to read job descriptions will drive more applicants. If you're pasting from another system, please check the formatting of your job description</span>
-                                <textarea class="jobDescriptionEditor form-control is-invalid" value="{{old('jobDescription')}}"name="jobDescription" required>@if(isset($jobData->apply_link)) {{ old('$jobData->description') }} @endif</textarea>
-                                <div class="valid-feedback">
-                                    Looks good!
+                                <textarea class="jobDescriptionEditor form-control" value="{{old('jobDescription')}}" name="jobDescription" >@if(isset($jobData->apply_link)) {{ old('$jobData->description') }} @endif</textarea>
+                                <div class="invalid-feedback">
+                                    Please Enter a Job Description.
                                 </div>
                             </div>
                         </div>
@@ -283,99 +276,99 @@
                             <h6 class="border-0">Please be as accurate as you can so we can help drive relevant candidates</h6>
                         </div>
                         <div class="jobSection companypart">
-                            <div class="form-group  mb-2">
-                                <label for="companyName" class="control-label">Company name <span class="red">*</span></label>
-                                <span class="sublabel">Provide your company's name. It'll appear in search results and next to your job listing</span>
-                                <input type="text" class="form-control" name="companyName" value="{{ old('companyName') }}" placeholder="e.g. Company Ltd." required @if(isset($jobData->company) && isset($jobData->company->name) && $jobData->company->name) value="{{ $jobData->company->name }}" @endif>
-                                <div class="valid-feedback" >
-                                    Looks good!
-                                </div>
-                                <div class="invalid-feedback">
-                                    Please Enter a Company Name.
-                                </div> 
+                        <div class="form-group mb-2">
+                        <label for="companyName" class="control-label">Company name <span class="red">*</span></label>
+                            <span class="sublabel">Provide your company's name. It'll appear in search results and next to your job listing</span>
+                            <input type="text" class="form-control" name="companyName" value="{{ old('companyName') }}" placeholder="e.g. Company Ltd." required @if(isset($jobData->company) && isset($jobData->company->name) && $jobData->company->name) value="{{ $jobData->company->name }}" @endif>
+                            <div class="valid-feedback" >
+                                Looks good!
                             </div>
-
-                            <div class="form-group mb-2">
-                                <label for="companyStatement" class="control-label">Company statement</label>
-                                <span class="sublabel">Provide your company's mission statement, or one-liner. It'll appear on your company profile</span>
-                                <input type="text" class="form-control" name="companyStatement" value="{{ old('companyStatement') }}" placeholder="e.g. It's our mission to fulfill our vision" required @if(isset($jobData->company) && isset($jobData->company->statement) && $jobData->company->statement) value="{{ $jobData->company->statement }}" @endif>
-                                <div class="valid-feedback" >
-                                    Looks good!
-                                </div>
-                                <div class="invalid-feedback">
-                                    Please Enter a Company Statement.
-                                </div> 
-                            </div>
-
-                            <div class="form-group  mb-2">
-                                <label for="companyLogo" class="control-label">Company logo</label>
-                                <span class="sublabel">Your company logo will appear next to your job listing and on the job description page itself</span>
-                                <input type="file" class="form-control" name="companyLogo" id="companyLogo" required>
-                                <div class="valid-feedback" >
-                                    Looks good!
-                                </div>
-                                <div class="invalid-feedback">
-                                    Please Choose file
-                                </div> 
-                            </div>
-
-                            <div class="form-group mb-2">
-                                <label for="companyEmail" class="control-label">Your contact email <span class="red">*</span></label>
-                                <span class="sublabel">This is where we will email your receipt and send instructions on how to edit the job role</span>
-                                <input type="text" class="form-control" name="companyEmail" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[com])?)*$" value="{{ old('companyEmail') }}" placeholder="e.g. receipts@company.com" required @if(isset($jobData->company) && isset($jobData->company->email) && $jobData->company->email) value="{{ $jobData->company->email }}" @endif>
-                                <div class="valid-feedback" >
-                                    Looks good!
-                                </div>
-                                <div class="invalid-feedback">
-                                    Please Enter a company Email.
-                                </div> 
-                            </div>
-
-                            <div class="form-group mb-2">
-                                <label for="companyWebsite" class="control-label">Website address</label>
-                                <span class="sublabel">Where should a candidate go to learn more about you?</span>
-                                <input type="text" class="form-control" name="companyWebsite" value="{{ old('companyWebsite') }}" placeholder="e.g. https://www.company.com" required @if(isset($jobData->company) && isset($jobData->company->website) && $jobData->company->website) value="{{ $jobData->company->website }}" @endif>
-                                <div class="valid-feedback" >
-                                    Looks good!
-                                </div>
-                                <div class="invalid-feedback">
-                                    Please Enter a company Website.
-                                </div> 
-                            </div>
-
-                            <div class="form-group mb-2">
-                                <label for="companyTwitter" class="control-label">Twitter handle</label>
-                                <span class="sublabel">What is your Twitter username?</span>
-                                <input type="text" class="form-control" name="companyTwitter" value="{{ old('companyTwitter') }}" placeholder="e.g. @company" required @if(isset($jobData->company) && isset($jobData->company->twitter) && $jobData->company->twitter) value="{{ $jobData->company->twitter }}" @endif>
-                                <div class="valid-feedback" >
-                                    Looks good!
-                                </div>
-                                <div class="invalid-feedback">
-                                    Please Enter a CompanyTwitter.
-                                </div> 
-                            </div>
-
-                            <div class="form-group mb-2">
-                                <label for="companyLocation" class="control-label">Company Location</label>
-                                <span class="sublabel">Where is the company headquartered?</span>
-                                <input type="text" class="form-control" name="companyLocation" value="{{ old('companyLocation') }}" placeholder="e.g. New York City, NY" required @if(isset($jobData->company) && isset($jobData->company->location) && $jobData->company->location) value="{{ $jobData->company->location }}" @endif>
-                                <div class="valid-feedback" >
-                                    Looks good!
-                                </div>
-                                <div class="invalid-feedback">
-                                    Please Enter a Company Location.
-                                </div> 
-                            </div>
-
-                            <div class="form-group mb-2">
-                                <label for="companyDescription" class="control-label">Company Description <span class="red">*</span></label>
-                                <span class="sublabel">Provide a longer description about your company to help a candidate understand what you do in more detail</span>
-                                <textarea class="companyDescriptionEditor form-control is-invalid" value="{{old('companyDescription' )}}"name="companyDescription" required>@if(isset($jobData->company) && isset($jobData->company->description) && $jobData->company->description) {{ ('$jobData->company->description') }} @endif</textarea>
-                                <div class="valid-feedback" >
-                                    Looks good!
-                                </div>
+                            <div class="invalid-feedback">
+                                Please Enter a Company Name.
                             </div>
                         </div>
+
+                        <div class="form-group mb-2">
+                            <label for="companyStatement" class="control-label">Company statement</label>
+                            <span class="sublabel">Provide your company's mission statement, or one-liner. It'll appear on your company profile</span>
+                            <input type="text" class="form-control" name="companyStatement" value="{{ old('companyStatement') }}" placeholder="e.g. It's our mission to fulfill our vision" required @if(isset($jobData->company) && isset($jobData->company->statement) && $jobData->company->statement) value="{{ $jobData->company->statement }}" @endif>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please Enter a Company Statement.
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-2">
+                            <label for="companyLogo" class="control-label">Company logo</label>
+                            <span class="sublabel">Your company logo will appear next to your job listing and on the job description page itself</span>
+                            <input type="file" class="form-control" name="companyLogo" id="companyLogo" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please Choose file
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-2">
+                            <label for="companyEmail" class="control-label">Your contact email <span class="red">*</span></label>
+                            <span class="sublabel">This is where we will email your receipt and send instructions on how to edit the job role</span>
+                            <input type="text" class="form-control" name="companyEmail" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[com])?)*$" value="{{ old('companyEmail') }}" placeholder="e.g. receipts@company.com" required @if(isset($jobData->company) && isset($jobData->company->email) && $jobData->company->email) value="{{ $jobData->company->email }}" @endif>
+                            <div class="valid-feedback" >
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please Enter a company Email.
+                            </div> 
+                        </div>
+
+                        <div class="form-group mb-2">
+                            <label for="companyWebsite" class="control-label">Website address</label>
+                            <span class="sublabel">Where should a candidate go to learn more about you?</span>
+                            <input type="text" class="form-control" name="companyWebsite" value="{{ old('companyWebsite') }}" placeholder="e.g. https://www.company.com" required @if(isset($jobData->company) && isset($jobData->company->website) && $jobData->company->website) value="{{ $jobData->company->website }}" @endif>
+                            <div class="valid-feedback" >
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please Enter a company Website.
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-2">
+                            <label for="companyTwitter" class="control-label">Twitter handle</label>
+                            <span class="sublabel">What is your Twitter username?</span>
+                            <input type="text" class="form-control" name="companyTwitter" value="{{ old('companyTwitter') }}" placeholder="e.g. @company" required @if(isset($jobData->company) && isset($jobData->company->twitter) && $jobData->company->twitter) value="{{ $jobData->company->twitter }}" @endif>
+                            <div class="valid-feedback" >
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please Enter a CompanyTwitter.
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-2">
+                            <label for="companyLocation" class="control-label">Company Location</label>
+                            <span class="sublabel">Where is the company headquartered?</span>
+                            <input type="text" class="form-control" name="companyLocation" value="{{ old('companyLocation') }}" placeholder="e.g. New York City, NY" required @if(isset($jobData->company) && isset($jobData->company->location) && $jobData->company->location) value="{{ $jobData->company->location }}" @endif>
+                            <div class="valid-feedback" >
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please Enter a Company Location.
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-2">
+                            <label for="companyDescription" class="control-label">Company Description <span class="red">*</span></label>
+                            <span class="sublabel">Provide a longer description about your company to help a candidate understand what you do in more detail</span>
+                            <textarea class="companyDescriptionEditor form-control is-invalid" value="{{old('companyDescription' )}}" name="companyDescription">@if(isset($jobData->company) && isset($jobData->company->description) && $jobData->company->description) {{ ('$jobData->company->description') }} @endif</textarea>
+                            <div class="invalid-feedback">
+                                Please Enter a Company Description.
+                            </div>
+                        </div>
+                    </div>
                     </div>
 
                     <div class="previewpart">
@@ -426,7 +419,7 @@
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" id="formbutton" class="btn btn-primary">Preview the job listing</button>
+                            <button type="submit" class="btn btn-primary">Preview the job listing</button>
                         </div>
                     </div>
                 </form>
@@ -554,6 +547,7 @@
                 Array.prototype.slice.call(forms)
                     .forEach(function (form) {
                     form.addEventListener('submit', function (event) {
+                        console.log(form);
                         if (!form.checkValidity()) {
                         event.preventDefault()
                         event.stopPropagation()
@@ -562,9 +556,6 @@
                         form.classList.add('was-validated')
                     }, false)
                     })
-            $("#formbutton").on('click',function() {
-                console.log("asdasda");
-            })
         });
     </script>
 

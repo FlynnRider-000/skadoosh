@@ -50,24 +50,21 @@
                                 <label for="jobType">Type of position <span class="text-danger">*</span></label>
                                 @if(!empty(\Config::get('constants.jobTypes'))) 
                                     @foreach(\Config::get('constants.jobTypes') as $key => $value)
-                                        <div class="form-check mb-3">
-                                            <input class="form-check-input" type="radio" {{ old('jobType') == $key ? 'checked' : '' }} value="{{ $key }}" name="jobType" id="jobType_{{ $key }}">
+                                        <div class="form-check mb-3 is-invalid">
+                                            <input class="form-check-input" type="radio" required {{ old('jobType') == $key ? 'checked' : '' }} value="{{ $key }}" name="jobType" id="jobType_{{ $key }}">
                                             <label class="form-check-label" for="jobType_{{ $key }}">
                                                 {{ $value }}
                                             </label>
                                         </div>
                                     @endforeach
                                 @endif
-                                <div class="invalid-feedback">
-                                    Please select a job type.
-                                </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mt-1">
                                 <label for="jobLocationType">Remote or location based ? <sup class="text-danger">*</sup></label>
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input" type="radio" {{ old('jobLocation') == 'office' ? 'checked' : '' }} value="office" name="jobLocation" id="jobLocationOffice">
+                                    <input class="form-check-input" type="radio" required {{ old('jobLocation') == 'office' ? 'checked' : '' }} value="office" name="jobLocation" id="jobLocationOffice">
                                     <label class="form-check-label" for="jobLocationOffice">
                                         Location based (in office)
                                     </label>
@@ -127,7 +124,8 @@
                         <div class="col-md-3">
                             <div class="mb-3">
                                 <select class="form-select" name="jobSalaryCurrency" id="jobSalaryCurrency" required>
-                                    @if(!empty(\Config::get('constants.jobSalaryCurrency'))) 
+                                <option disabled selected></option>
+                                @if(!empty(\Config::get('constants.jobSalaryCurrency'))) 
                                         @foreach(\Config::get('constants.jobSalaryCurrency') as $key => $value)
                                             <option value="{{ $key }}" {{ old('jobSalaryCurrency') == $key ? "selected" : "" }}>
                                                 {{ $value }}
@@ -167,6 +165,7 @@
                         <div class="col-md-3">
                             <div class="mb-3">
                                 <select class="form-select" name="jobSalaryType" id="jobSalaryType" required>
+                                    <option disabled selected></option>
                                     @if(!empty(\Config::get('constants.jobSalaryType'))) 
                                         @foreach(\Config::get('constants.jobSalaryType') as $key => $value)
                                             <option value="{{ $key }}" {{ old('jobSalaryType') == $key ? "selected" : "" }}>
@@ -200,7 +199,7 @@
                     <div class="row">
                         <div class="mb-3">
                             <label for="jobDescription">Job Description</label>
-                            <textarea id="job-description" class="text-editor" name="jobDescription">{{ old('jobDescription') }}</textarea>
+                            <textarea id="job-description" class="text-editor" value="{{old('jobDescription')}}"name="jobDescription">{{ old('jobDescription') }}</textarea>
                             <div class="invalid-feedback">
                                 Please enter a job description.
                             </div>  
@@ -312,7 +311,7 @@
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label for="companyDescription">Company Description</label>
-                                <textarea id="company-description" class="text-editor" name="companyDescription">{{ old('companyDescription') }}</textarea>
+                                <textarea id="company-description" class="text-editor" value="{{old('companyDescription')}}" name="companyDescription">{{ old('companyDescription') }}</textarea>
                                 <div class="invalid-feedback">
                                     Please enter a company description.
                                 </div>  
@@ -323,7 +322,7 @@
                         <label class="d-block" for="jobLocationType">Job Post Type <sup class="text-danger">*</sup></label>
                         <div class="d-flex flex-wrap">
                             <div class="form-check col-md-2 mb-3">
-                                <input class="form-check-input" type="radio" {{ old("is_premium") == 0 ? 'checked' : '' }} value="0" name="isPremium" id="isPremiumFree">
+                                <input class="form-check-input" type="radio" required {{ old("is_premium") == 1 ? 'checked' : '' }} value="0" name="isPremium" id="isPremiumFree">
                                 <label class="form-check-label" for="isPremiumFree">
                                     Free
                                 </label>

@@ -116,7 +116,7 @@
               <div class="col-md-12">
                   <div class="mb-3">
                       <label for="companyDescription">Company Description</label>
-                      <textarea id="company-description" class="text-editor" name="companyDescription">{{ old('companyDescription') }}</textarea>
+                      <textarea id="company-description" class="text-editor" value="{{old('companyDescription')}}" name="companyDescription">{{ old('companyDescription') }}</textarea>
                       <div class="invalid-feedback">
                           Please enter a company description.
                       </div>  
