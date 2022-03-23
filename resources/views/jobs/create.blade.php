@@ -196,7 +196,7 @@
                                 <div class="row">
                                     <div class="col-sm-2 mb-2">
                                         <select class="form-control" name="jobSalaryCurrency" required>
-                                            <option disabled value="select" selected></option>    
+                                            <option disabled selected></option>    
                                             @if(!empty(\Config::get('constants.jobSalaryCurrency')))
                                                 @foreach(\Config::get('constants.jobSalaryCurrency') as $key => $value)
                                                     <option value="{{ $key }}" {{ old('jobSalaryCurrency') == $key ? "selected" : "" }} @if(isset($jobData->salary) && $jobData->salary->currency_type == $key) selected="selected" @endif>{{ $value }}</option>
@@ -363,9 +363,9 @@
                         <div class="form-group mb-2">
                             <label for="companyDescription" class="control-label">Company Description <span class="red">*</span></label>
                             <span class="sublabel">Provide a longer description about your company to help a candidate understand what you do in more detail</span>
-                            <textarea class="companyDescriptionEditor form-control is-invalid" value="{{old('companyDescription' )}}" name="companyDescription">@if(isset($jobData->company) && isset($jobData->company->description) && $jobData->company->description) {{ ('$jobData->company->description') }} @endif</textarea>
-                            <div class="invalid-feedback">
-                                Please Enter a Company Description.
+                            <textarea class="companyDescriptionEditor form-control" value="{{old('companyDescription' )}}" name="companyDescription">@if(isset($jobData->company) && isset($jobData->company->description) && $jobData->company->description) {{ ('$jobData->company->description') }} @endif</textarea>
+                            <div class="valid-feedback">
+                                Please enter a CompanyDescription
                             </div>
                         </div>
                     </div>
