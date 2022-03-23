@@ -364,8 +364,8 @@
                             <label for="companyDescription" class="control-label">Company Description <span class="red">*</span></label>
                             <span class="sublabel">Provide a longer description about your company to help a candidate understand what you do in more detail</span>
                             <textarea class="companyDescriptionEditor form-control" value="{{old('companyDescription' )}}" name="companyDescription">@if(isset($jobData->company) && isset($jobData->company->description) && $jobData->company->description) {{ ('$jobData->company->description') }} @endif</textarea>
-                            <div class="valid-feedback">
-                                Please enter a CompanyDescription
+                            <div class="invalid-feedback">
+                                Please Enter a CompanyDescription
                             </div>
                         </div>
                     </div>
