@@ -1,0 +1,66 @@
+a {
+  text-decoration: none;
+}
+.newar h4{
+    font-size: 16px;
+    margin-bottom: 7px;
+    color: #0b74ff;
+    text-decoration: underline;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+}
+
+.pbtnss{
+    margin-bottom:20px;
+}
+
+.sidecnt p, span {
+    color: #2E3B56;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.5em;    
+}
+.job-post-details p {
+    color: #2E3B56;
+}
+p, span {
+    color: #506172;
+    font-size: 16px;
+    line-height: 30px;
+    margin-bottom: 15px;
+    font-weight: 300;
+}
+ul {
+    margin: 0px;
+    padding: 0px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.job-tittle span:nth-of-type(2) {
+    background: #29A387;
+    font-size: 15px;
+    font-weight: 300;
+    color: #FFF;
+    border-radius: 4px;
+    padding: 5px 10px;
+    margin-left: 10px;
+}
+.apply-btn2 a {
+    margin-top: 20px;
+}
+.apply-btn2 a {
+    padding: 17px 40px 20px 40px;
+    border-radius: 40px;
+    background: #FF8549 !important;
+    margin: 10px 10px;
+    color: #fff !important;
+}
+/* detail page */
+p, span {
+    color: #2E3B56;
+    font-size: 16px;
+    line-height: 30px;
+    margin-bottom: 16px;
+    font-weight: 300;    
+}

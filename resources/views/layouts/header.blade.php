@@ -1,14 +1,4 @@
-<script>
-
-    var menu = $('ul#navigation');
-    if(menu.length){
-      menu.slicknav({
-        prependTo: ".mobile_menu",
-        closedSymbol: '+',
-        openedSymbol:'-'
-      });
-    };
-</script>
+<script src="{{ URL::asset('/assets/js/layout.footer.js') }}"></script>
 <header>
     <!-- Header Start -->
     <div class="header-area header-transparrent">

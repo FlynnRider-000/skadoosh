@@ -1,0 +1,41 @@
+@media only screen and (max-width: 1200px) {
+  .owl-stage-outer {
+      overflow: unset !important;
+  }
+
+  .owl-carousel {
+      overflow: hidden !important;
+  }
+
+  @media only screen and (max-width: 600px) {
+      .owl-stage-outer {
+          overflow: unset !important;
+      }
+
+      .owl-carousel {
+          overflow: hidden !important;
+      }
+
+      .owl-carousel .owl-nav .owl-prev {
+          left: 5px !important;
+      }
+      .owl-carousel .owl-nav .owl-next{
+          right: 8px;
+      }
+
+      /*.single-job-items .job-items{
+          width: 100% !important;
+      }*/
+      /*.single-job-items{
+          padding: 20px 7px !important;
+          width: 250px !important;
+      }
+      .owl-stage .owl-item{
+          width: 175px !important;
+      }*/
+      /*.owl-stage{
+          padding-right: unset !important:
+          padding-left:unset !important;
+      }*/
+  }
+}

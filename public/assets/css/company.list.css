@@ -1,0 +1,28 @@
+.newar h4{
+  font-size: 14px;
+  margin-bottom: 7px;
+  color: #0b74ff;
+  text-decoration: underline;
+font-weight:400;
+  font-family: 'Urbanist', sans-serif;
+}
+
+.pbtnss{ margin-bottom:20px; }
+.table-light{
+  color: #495057;
+  border-color: #eff2f7;
+  background-color: #eff2f7;
+}
+.table thead th{
+  border: 0 !important;
+}
+
+.btn-details {
+  padding: 1rem 1rem;
+  border-radius: 1rem;
+  background: #F4A937 !important;
+}
+.table>:not(caption)>*>* {
+  padding: 0.75rem 0.75rem;
+  border-bottom-width: 1px !important;
+}

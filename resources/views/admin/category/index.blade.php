@@ -16,7 +16,7 @@
                 <div class="widget-body">
                     <div class="widget-main">
 
-                        <table id="list-table" class="table table-striped table-bordered table-hover">
+                        <table  class="table table-striped table-bordered table-hover">
                             <thead>
                             <tr>
                                 <th>Id</th>
@@ -66,19 +66,5 @@
 @section('scripts')
     <script src="{{ asset('/admin_assets/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{ asset('/admin_assets/js/jquery.dataTables.bootstrap.min.js')}}"></script>
-
-    <script type="text/javascript">
-        jQuery(function ($) {
-
-            let table = $('#list-table').DataTable({
-                "responsive": true,
-                "pageLength": 50
-            });
-
-            // Sort by datatable desc
-            table.order([0, 'desc'])
-                .draw();
-
-        })
-    </script>
+    <!-- <script src="{{ asset('/admin_assets/js/category.index.js')}}"></script> -->
 @endsection

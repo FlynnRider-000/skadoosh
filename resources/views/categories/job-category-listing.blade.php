@@ -1,47 +1,5 @@
 <!-- Featured_job_start -->
-<style type="text/css">
-    @media only screen and (max-width: 1200px) {
-        .owl-stage-outer {
-            overflow: unset !important;
-        }
-
-        .owl-carousel {
-            overflow: hidden !important;
-        }
-
-        @media only screen and (max-width: 600px) {
-            .owl-stage-outer {
-                overflow: unset !important;
-            }
-
-            .owl-carousel {
-                overflow: hidden !important;
-            }
-
-            .owl-carousel .owl-nav .owl-prev {
-                left: 5px !important;
-            }
-            .owl-carousel .owl-nav .owl-next{
-                right: 8px;
-            }
-
-            /*.single-job-items .job-items{
-                width: 100% !important;
-            }*/
-            /*.single-job-items{
-                padding: 20px 7px !important;
-                width: 250px !important;
-            }
-            .owl-stage .owl-item{
-                width: 175px !important;
-            }*/
-            /*.owl-stage{
-                padding-right: unset !important:
-                padding-left:unset !important;
-            }*/
-        }
-    }
-</style>
+<link rel="stylesheet" href="{{ asset('assets/css/job-category-listing.css') }}">
 <section class="featured-job-area feature-padding">
     <div class="container">
         <!-- Section Tittle -->
@@ -117,35 +75,7 @@
 
 <!-- Featured_job_end -->
 
-<script>
-    $('.owl-carousel').owlCarousel({
-
-        loop:false,
-        margin:10,
-        nav:false,
-        navText: ['<i class="fa fa-angle-left" aria-hidden="true"></i>', '<i class="fa fa-angle-right" aria-hidden="true"></i>'],
-        responsiveClass:true,
-        responsive:{
-            0:{
-                items:1.2,
-            },            
-            600:{
-                items:2.2,
-            },
-            800:{
-                items:3,
-            },
-            1000:{
-                items:4,
-            }
-        }
-    })
-   
-
-</script>
-
-
-   
+    <script src="{{URL::asset('/assets/js/job-category-listing.js')}}"> </script>
     <!-- Jquery mousewheel -->
     <script src="{{ URL::asset('assets/js/jquery.mousewheel.min.js') }}"></script>
     <script src="{{ URL::asset('assets/js/mousewheel-init.js') }}"></script>

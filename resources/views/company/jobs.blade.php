@@ -59,46 +59,6 @@
 </div>
 <!--Pagination End  -->
 
-<script type="text/javascript">
-    $(document).on('ready', function() {
-        $('section.featured-job-area').on('click', '.ajaxJobDetail', function(e) {
-            $(".ajaxJobDetail").removeClass('active');
-            $( this ).addClass('active');            
-            var id = $(this).data('jobid');
-            var token = $("meta[name='csrf-token']").attr("content");
-            var url = "{{ URL('load-job-detail') }}";
-            $.ajax(
-            {
-                url: url+"/"+id,
-                type: "GET",
-                success: function (data) {
-                    var dataResult = JSON.parse(data);
-                    if(dataResult.status == 1) {
-                        $('.singleJobListingDetail').html(dataResult.html)
-                    } else {
-                        alert(dataResult.message)
-                    }
-                }
-            });
-        });
-    });
-
-</script>
-
-<style>
-
-a {
-  text-decoration: none;
-}
-.newar h4{
-    font-size: 16px;
-    margin-bottom: 7px;
-    color: #0b74ff;
-    text-decoration: underline;
-    font-weight: 700;
-    font-family: 'Roboto', sans-serif;
-}
-
-.pbtnss{margin-bottom:20px;}
-</style>
+<script src="{{ asset('/assets/js/company.jobs.js')}}"></script>
+<link rel="stylesheet" href="{{ asset('assets/css/company.job.css') }}">
 @endsection

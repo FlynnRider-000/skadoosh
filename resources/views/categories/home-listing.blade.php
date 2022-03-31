@@ -1,35 +1,5 @@
 <!-- Hero Area Start-->
-<style type="text/css">
-    .nav_top_btn{
-        margin: 0 10px;
-    }
-    .bg-img-header{
-        display: none;
-    }
-    @media only screen and (max-width: 600px) {
-        .main-hero {
-            background:#fff;
-        }
-        .bg-img-header{
-            background: url(../../assets/hero_mobile.jpg);
-            min-height: 300px;
-            background-size: contain;
-            background-repeat: no-repeat;
-            display: block;
-            /* background-attachment: fixed; */
-            background-position: top;
-            /* padding-top: 0px; */
-            padding-top: 200px;
-        }
-        .jbs{
-            display: none;
-        }
-        .main-bg{
-            padding: 0;
-        }
-
-    }
-</style>
+<link rel="stylesheet" href="{{ asset('assets/css/home-listing.css') }}">
 <section class="main-hero">
     <div class="container main-bg">
         <!-- Section Tittle -->

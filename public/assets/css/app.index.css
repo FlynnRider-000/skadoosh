@@ -1,0 +1,61 @@
+.search {
+  height: 60px;
+  border-radius: 40px;
+  padding: 0px 15px;
+  border: 1px solid #CDD0E9;
+}
+.search-txt {
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  color: #333;
+  font-size: 16px;
+  line-height: 27px;
+  width: 100%;
+  margin-top: 16px;
+}
+.search-btn {
+  position: relative;
+  float: right;
+  bottom: 30px;
+  background: #FF8549 !important;
+  color: #fff !important;
+  padding: 24px 32px;
+  border-radius: 40px;
+  left: 17px;
+  margin: -9px 6px 0 0;
+  border: 1px solid #FF8549;
+}
+.search-btn:hover{
+  color: #000 !important;
+  border: 1px solid #FF8549;
+}
+.search-btn::before{
+  background: #D4FAE2 !important;
+  border-color: #D4FAE2 !important;
+
+}
+.mobile-foottp{
+  display: none;
+}
+@media only screen and (max-width: 991px) {
+  .mobile-foottp{
+      background: url(../../assets/bttim_mobile.jpg);
+      min-height: 300px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      display: block;
+      /* background-attachment: fixed; */
+      background-position: top;
+      /* padding-top: 0px; */
+      padding-top: 200px;
+  }
+  .foottp{
+      background: #fff;
+  }
+  .riff{
+      float: unset;
+  }
+}

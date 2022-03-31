@@ -1,0 +1,57 @@
+/*.job-post-company .formnew{
+            border:1px solid #CDD0E9;
+            border-radius: 10px;
+        }*/
+        .jobSection input[type="radio"]{
+          display: none;
+      }
+      .jobSection .active{
+          background: #FEF7EC !important;
+          color: #f4a937;
+          border-color: #f4a937;
+      }
+      .nice-select{
+          float: unset !important;
+          border: 1px solid #dcdcdc !important;
+          border-radius: 3px !important;
+          background-color: #fff;
+          font-weight: 300;
+          height: 46px;
+      }
+      .nice-select .list{
+          width: 100% !important;
+      }
+      .red{
+          color: red !important;
+      }
+      /* input:checked + label {
+       background: red;
+   }*/
+      @media only screen and (max-width: 600px) {
+          .topjbcolor{
+              background-color: #fff;
+              height: 170px;
+              color: #fff;
+              margin-bottom: 40px;
+              padding-left: 0px !important;
+              padding-right: 0px !important;
+              padding-top: 5px;
+              margin-left: 0px !important;
+              margin-right: 0px !important;
+          }
+          .progress-barr .step .bullet:before, .progress-barr .step .bullet:after{
+              position: absolute;
+              content: '';
+              bottom: 22px;
+              left: 50px;
+              height: 3px;
+              width: 40px !important;
+              background: #CDD0E9;
+          }
+          .mainft{
+              columns: unset !important;
+          }
+          .previewpart{
+              padding: 40px 20px;
+          }
+      }

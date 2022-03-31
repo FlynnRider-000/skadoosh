@@ -1,0 +1,24 @@
+.footer-tittle h4{
+  font-family: 'Scheherazade New', serif;
+  font-weight: 700;
+  font-size: 18px;
+  margin: 20px 0px !important;
+  color: #fff;
+  text-transform: capitalize !important;
+}
+.footer-tittle a{
+  color: #C8C8CD !important;
+  font-size: 14px !important;
+}
+@media only screen and (max-width: 600px) {
+    .mobile-center{
+      text-align: center;
+    }
+    .footer-bottom-area{
+      text-align: center !important;
+    }
+    .footer-social{
+      text-align: center !important;
+      float: unset !important;
+    }
+}

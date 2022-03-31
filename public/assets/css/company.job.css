@@ -1,0 +1,13 @@
+a {
+  text-decoration: none;
+}
+.newar h4{
+    font-size: 16px;
+    margin-bottom: 7px;
+    color: #0b74ff;
+    text-decoration: underline;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+}
+
+.pbtnss{margin-bottom:20px;}
