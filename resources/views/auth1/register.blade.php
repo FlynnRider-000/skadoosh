@@ -29,7 +29,7 @@
                                 </div>
                             </div>
 
-                            <div class="mt-5 justify-around row p-2">
+                            
                                 <!-- <div class="col-6 form-group">
                                     <div class="card mb-3" style="max-width: 18rem;">
                                         <div class="d-flex justify-content-end mr-2">
@@ -58,20 +58,25 @@
                                         </div>
                                     </div>
                                 </div>     -->
-                                
-                            </div>
                             <div class="p-2">
                                 <form method="POST" class="form-horizontal" action="{{ route('signup.post') }}" enctype="multipart/form-data">
                                     @csrf
-                                    <div class="mt-1">
-                                        <label for="role">Type of position <span class="text-danger">*</span></label>
+                                    <div class="mt-1 justify-around row p-2">
                                         @if(!empty(\Config::get('constants.role'))) 
                                             @foreach(\Config::get('constants.role') as $key => $value)
-                                                <div class="form-check mb-3 is-invalid">
-                                                    <input class="form-check-input" type="radio" required {{ old('role') == $key ? 'checked' : '' }} value="{{ $key }}" name="role" id="role_{{ $key }}">
-                                                    <label class="form-check-label" for="role_{{ $key }}">
-                                                        {{ $value }}
-                                                    </label>
+                                                <div class="col-6 form-group">
+                                                    <div class="card mb-3" style="max-width: 18rem;">
+                                                        <div class="d-flex justify-content-end mr-2">
+                                                        <input class="form-check-input" type="radio" required {{ old('role') == $key ? 'checked' : '' }} value="{{ $key }}" name="role" id="role_{{ $key }}">
+                                                        </div>
+                                                        
+                                                        <div class="card-body text-primary mt-3 flex justify-center text-center">
+                                                            <img 
+                                                                class="text-white text-center">
+                                                                <i class="mdi mdi-account-circle-outline fa-3x"></i></img>
+                                                            <p class="card-text" for="role_{{ $key }}">{{ $value }}</p>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             @endforeach
                                         @endif
