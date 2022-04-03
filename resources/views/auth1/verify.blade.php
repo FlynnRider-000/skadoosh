@@ -1,4 +1,4 @@
-@extends('layouts.master-without-nav')
+@extends('layouts.backend.master-without-nav')
 
 @section('title')
     Verify Password

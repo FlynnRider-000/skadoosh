@@ -1,4 +1,4 @@
-@extends('layouts.master-without-nav')
+@extends('layouts.backend.master-without-nav')
 
 @section('title')
     @lang('translation.Register')
@@ -12,165 +12,129 @@
     @endsection
 
     @section('content')
-
+    @include('layouts.frontend.stylelib')
+    @include('layouts.frontend.header')
         <div class="account-pages my-5 pt-sm-5">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-md-8 col-lg-6 col-xl-5">
-                        <div class="card overflow-hidden">
-                            <div class="bg-primary bg-soft">
-                                <div class="row">
-                                    <div class="col-7">
-                                        <div class="text-primary p-4">
-                                            <h5 class="text-primary">Free Register</h5>
-                                            <p>Get your free Skote account now.</p>
+                    <div class="col-md-10 col-lg-6 col-xl-6">
+                         <div class="card overflow-hidden p-5">
+                            <div class="bg-soft">
+                                <div class="row justify-content-center">
+                                    <div class="col-12">
+                                        <div class="p-4">
+                                            <p class="header-style text-center"><i class="bi bi-book-half"></i>Sign up to find work you love</p>
                                         </div>
-                                    </div>
-                                    <div class="col-5 align-self-end">
-                                        <img src="{{ URL::asset('/admin_assets/images/profile-img.png') }}" alt=""
-                                            class="img-fluid">
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-body pt-0">
-                                <div>
-                                    <a href="index">
-                                        <div class="avatar-md profile-user-wid mb-4">
-                                            <span class="avatar-title rounded-circle bg-light">
-                                                <img src="{{ URL::asset('/admin_assets/images/logo.svg') }}" alt=""
-                                                    class="rounded-circle" height="34">
+
+                            <div class="mt-5 justify-around row p-2">
+                                <!-- <div class="col-6 form-group">
+                                    <div class="card mb-3" style="max-width: 18rem;">
+                                        <div class="d-flex justify-content-end mr-2">
+                                           <input class="form-check-input" type="" required {{ old('jobLocation') == 'office' ? 'checked' : '' }} value="client" name="typework" id="client">
+                                        </div>
+                                        
+                                        <div class="card-body text-primary mt-3 flex justify-center text-center">
+                                            <img 
+                                                class="text-white text-center">
+                                                <i class="mdi mdi-account-circle-outline fa-3x"></i></img>
+                                            <p class="card-text">I'm a client, hiring for a project</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6 form-group">
+                                    <div class="card mb-3" style="max-width: 18rem;">
+                                        <div class="d-flex justify-content-end mr-2">
+                                           <input class="form-check-input" type="radio" required {{ old('jobLocation') == 'office' ? 'checked' : '' }} value="freelancer" name="typework" id="freelancer">
+                                        </div>
+                                        
+                                        <div class="card-body text-primary mt-3 flex justify-center text-center">
+                                            <img 
+                                                class="text-white text-center">
+                                                <i class="mdi mdi-file-find fa-3x"></i></img>
+                                            <p class="card-text">I'm a freelancer, looking for work</p>
+                                        </div>
+                                    </div>
+                                </div>     -->
+                                
+                            </div>
+                            <div class="p-2">
+                                <form method="POST" class="form-horizontal" action="{{ route('signup.post') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="mt-1">
+                                        <label for="role">Type of position <span class="text-danger">*</span></label>
+                                        @if(!empty(\Config::get('constants.role'))) 
+                                            @foreach(\Config::get('constants.role') as $key => $value)
+                                                <div class="form-check mb-3 is-invalid">
+                                                    <input class="form-check-input" type="radio" required {{ old('role') == $key ? 'checked' : '' }} value="{{ $key }}" name="role" id="role_{{ $key }}">
+                                                    <label class="form-check-label" for="role_{{ $key }}">
+                                                        {{ $value }}
+                                                    </label>
+                                                </div>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="email" class="form-control @error('email') is-invalid @enderror" id="useremail"
+                                        value="{{ old('email') }}" name="email" placeholder="Enter email" autofocus required>
+                                        @if ($errors->has('email'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('email') }}</strong>
                                             </span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="p-2">
-                                    <form method="POST" class="form-horizontal" action="{{ route('register') }}" enctype="multipart/form-data">
-                                        @csrf
-                                        <div class="mb-3">
-                                            <label for="useremail" class="form-label">Email</label>
-                                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="useremail"
-                                            value="{{ old('email') }}" name="email" placeholder="Enter email" autofocus required>
-                                            @error('email')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
+                                        @endif
+                                    </div>
 
-                                        <div class="mb-3">
-                                            <label for="username" class="form-label">Username</label>
-                                            <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                            value="{{ old('name') }}" id="username" name="name" autofocus required
-                                                placeholder="Enter username">
-                                            @error('name')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
+                                    <div class="mb-3">
+                                        <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                        value="{{ old('name') }}" id="username" name="name" autofocus required
+                                            placeholder="Enter username">
+                                        @if ($errors->has('name'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('name') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
 
-                                        <div class="mb-3">
-                                            <label for="userpassword" class="form-label">Password</label>
-                                            <input type="password" class="form-control @error('password') is-invalid @enderror" id="userpassword" name="password"
-                                                placeholder="Enter password" autofocus required>
-                                                @error('password')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
+                                    <div class="mb-3">
+                                        <input type="password" class="form-control @error('password') is-invalid @enderror" id="userpassword" name="password"
+                                            placeholder="Enter password" autofocus required>
+                                            @if ($errors->has('password'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('password') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                    
+                                    <select class="form-select" name="country" id="country" value="{{ old('country') }}" autofocus required>
+                                         <option disabled selected>Enter Country</option>
+                                         @if(!empty(\Config::get('constants.country'))) 
+                                            @foreach(\Config::get('constants.country') as $key => $country)
+                                                <option value="{{ $key }}" required name="country" id=country_{{$key}} {{ old('country') == $key ? 'selected' : '' }}>{{ $country }}</option>
+                                            @endforeach
+                                        @endif
+                                    </select>
 
-                                        <div class="mb-3">
-                                            <label for="confirmpassword" class="form-label">Confirm Password</label>
-                                            <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" id="confirmpassword" name="password_confirmation"
-                                            name="password_confirmation" placeholder="Enter Confirm password" autofocus required>
-                                            @error('password_confirmation')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
+                                    <div class="form-check mb-3 ">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <p style="font-family: 'Urbanist','sans-serif'" class="text-left">
+                                            Agree to the <a href="#" class="linkcolor">Skadoosh Term of Service</a>. 
+                                        </p>
+                                    </div>
+                                    </div>
 
-                                        <div class="mb-3">
-                                            <label for="userdob">Date of Birth</label>
-                                            <div class="input-group" id="datepicker1">
-                                                <input type="text" class="form-control @error('dob') is-invalid @enderror" placeholder="dd-mm-yyyy"
-                                                    data-date-format="dd-mm-yyyy" data-date-container='#datepicker1' data-date-end-date="0d" value="{{ old('dob') }}"
-                                                    data-provide="datepicker" name="dob" autofocus required>
-                                                <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
-                                                @error('dob')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                        </div>
+                                    <div class="mt-2 d-grid">
+                                        <button class="nav_signup_credential"
+                                            type="submit">Create my account</button>
+                                    </div>
 
-                                        <div class="mb-3">
-                                            <label for="avatar">Profile Picture</label>
-                                            <div class="input-group">
-                                                <input type="file" class="form-control @error('avatar') is-invalid @enderror" id="inputGroupFile02" name="avatar" autofocus required>
-                                                <label class="input-group-text" for="inputGroupFile02">Upload</label>
-                                            </div>
-                                            @error('avatar')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-
-                                        <div class="mt-4 d-grid">
-                                            <button class="btn btn-primary waves-effect waves-light"
-                                                type="submit">Register</button>
-                                        </div>
-
-                                        <div class="mt-4 text-center">
-                                            <h5 class="font-size-14 mb-3">Sign up using</h5>
-
-                                            <ul class="list-inline">
-                                                <li class="list-inline-item">
-                                                    <a href="#"
-                                                        class="social-list-item bg-primary text-white border-primary">
-                                                        <i class="mdi mdi-facebook"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="list-inline-item">
-                                                    <a href="#"
-                                                        class="social-list-item bg-info text-white border-info">
-                                                        <i class="mdi mdi-twitter"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="list-inline-item">
-                                                    <a href="#"
-                                                        class="social-list-item bg-danger text-white border-danger">
-                                                        <i class="mdi mdi-google"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-                                        <div class="mt-4 text-center">
-                                            <p class="mb-0">By registering you agree to the Skote <a href="#"
-                                                    class="text-primary">Terms of Use</a></p>
-                                        </div>
-                                    </form>
-                                </div>
-
+                                </form>
+                            </div>
+                            <div class="mt-3 text-center">
+                                <p style="font-family: 'Urbanist','sans-serif'">Already have an account? <a href="{{ url('/nx/login') }}" class="linkcolor">Log In</a></p>
                             </div>
                         </div>
-                        <div class="mt-5 text-center">
-
-                            <div>
-                                <p>Already have an account ? <a href="{{ url('login') }}" class="fw-medium text-primary">
-                                        Login</a> </p>
-                                <p>© <script>
-                                        document.write(new Date().getFullYear())
-
-                                    </script> Skote. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand
-                                </p>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>

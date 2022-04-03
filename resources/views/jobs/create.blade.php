@@ -113,7 +113,7 @@
                                     <label for ="remote_region" class="mt-0 mb-0" style="font-size: 15px;"> Remote (with regional restrictions)</label>
                                 </div>
                             </div>
-
+                            
                             <div class="jobOfficeLocationDiv" @if(isset($jobData->location) && $jobData->location == 'office') @else style="display: none;" @endif>
                                 <label for="jobOfficeLocationCity" class="control-label">Office location <span class="red">*</span></label>
                                 <input type="text" name="jobOfficeLocationCityName" value="{{ old('jobOfficeLocationCity') }}" class="form-control" id="jobOfficeLocationCity" placeholder="e.g. New York City" @if(isset($jobData->location) && $jobData->location == 'office' && isset($jobData->location_city) && $jobData->location_city) value="{{ $jobData->location_city }}" @endif>

@@ -18,9 +18,9 @@
                                 <nav class="d-none d-lg-block">
                                     <ul id="navigation">
 										<li class="d-none d-sm-block">
-                                          {{--  <a href="{{url('search-job')}}">
+                                            <a href="{{url('search-job')}}">
                                                 <i class="fa fa-search"></i>
-                                            </a>--}}
+                                            </a>
                                             <div class="dropdown header_dropdown">
                                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <i class="fa fa-search"></i>
@@ -33,11 +33,6 @@
                                                 </div>
                                             </div>
                                         </li>
-                                        <li class="d-block d-sm-none">
-                                            <a href="{{ url('/post-a-job') }}" class="btn nav_top_btn">Post a Job</a>
-
-                                        </li>
-
                                     </ul>
                                 </nav>
                             </div>

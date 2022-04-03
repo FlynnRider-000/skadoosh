@@ -35,7 +35,14 @@ Route::get('/search-job', [App\Http\Controllers\JobController::class, 'searchJob
 Route::get('/job-detail/{title}', [App\Http\Controllers\JobController::class, 'detail']);
 Route::get('/load-job-detail/{id}', [App\Http\Controllers\JobController::class, 'loadJobDetail']);
 
-// company routes
+Route::get('/nx/login',[App\Http\Controllers\LoginController::class, 'index'])->name('nxlogin');
+Route::post('/nx/login',[App\Http\Controllers\LoginController::class, 'process_login'])->name('login.post');
+Route::get('/nx/signup',[App\Http\Controllers\SignUpController::class, 'index'])->name('nxsignup');
+Route::post('/nx/signup',[App\Http\Controllers\SignUpController::class, 'process_signup'])->name('signup.post');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('dashboard', [AuthController::class, 'dashboard'])->middleware(['auth', 'is_verify_email']); 
+Route::get('account/verify/{token}', [AuthController::class, 'verifyAccount'])->name('user.verify'); 
 
 Route::get('/companies', [App\Http\Controllers\CompanyController::class, 'showAllCompanies'])->name('show.all.companies');
 Route::get('/companies/{name}', [App\Http\Controllers\CompanyController::class, 'showCompany'])->name('show.company');
@@ -52,6 +59,13 @@ Route::prefix('admin')->group(function(){
     Route::post('remove-premium', [App\Http\Controllers\AdminJobController::class, 'removePremium'])->middleware(['auth']);
 });
 
+Route::prefix('client')->group(function(){
+    Route::get('dashboard', [App\Http\Controllers\ClientController::class, 'index'])->middleware(['auth'])->name('clientdashboard');
+});
+
+Route::prefix('freelancer')->group(function(){
+    Route::get('dashboard', [App\Http\Controllers\FreelancerController::class, 'index'])->middleware(['auth'])->name('freelancerdashboard');
+});
 // Subscribe
 
 Route::post('subscribe', [App\Http\Controllers\SubscriptionController::class, 'subscribe'])->name('subscribe');

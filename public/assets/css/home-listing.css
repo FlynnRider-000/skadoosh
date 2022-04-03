@@ -6,7 +6,7 @@
 }
 @media only screen and (max-width: 600px) {
   .main-hero {
-      background:#000;
+      background:#;
   }
   .bg-img-header{
       background: url(../../assets/hero_mobile.jpg);

@@ -1,19 +1,18 @@
 <!-- Hero Area Start-->
 <link rel="stylesheet" href="{{ asset('assets/css/home-listing.css') }}">
 <section class="main-hero">
-    <div class="container main-bg">
+    <div class="container">
         <!-- Section Tittle -->
         <div class="row">
-        <div id="" class="col-lg-6 bg-img-header"> </div>
             <div class="col-lg-8 col-xl-6 col-md-10">
                 <div class="wrap-inner">
-                    <span class="job-m">
+                    <!-- <span class="job-m">
                         <a href="#">{{ $newJobsToday }} new jobs</a> added today
-                    </span>
-                    <h1>Land Your Dream Job in  Animation, VFX, or Gaming  Industry</h1>
-                    <p>Skadoosh.gg is a job platform to land your next dream job or kick start your new career in animation, vfx, or the gaming industry.</p>
+                    </span> -->
+                    <h1>How work <br>should work</h1>
+                    <p>Forget the old rules. You can have the best people.Right now. Right here.</p>
                    {{-- <form class="subscribe-form" action="{{ route('subscribe') }}" method="POST">--}}
-                    <form class="subscribe-form" action="#" method="POST">
+                    <!-- <form class="subscribe-form" action="#" method="POST">
                         @csrf
                         <div class="row align-items-center mb-2 subscribe-form-inner">
                             <div>Receive a</div>
@@ -31,7 +30,7 @@
                                 Find a Job
                             </button>
                         </div>
-                    </form>
+                    </form> -->
                 </div>
             </div>
             

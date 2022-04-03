@@ -8,7 +8,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'skadoosh') }}</title>
 
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -22,12 +22,14 @@
     <body>
         <div class="overlaynew">
             <!-- Preloader End -->
-            @include('layouts.frontend.header')
+            @include('clients.header')
+
             <main>
+            <p>this is test123.</p>
                 @yield('content')
             </main>
 
-            @include('layouts.frontend.footer')
+            @include('clients.footer')
         </div>
         <script src="{{ asset('assets/js/main.js') }}"></script>
         <script src="{{ asset('assets/js/jquery.slicknav.min.js') }}"></script>
