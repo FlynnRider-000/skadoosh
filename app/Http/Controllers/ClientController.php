@@ -37,8 +37,7 @@ class ClientController extends Controller
     {
         return view('clients.dashboard',['jobs'        => Job::all(),
                                          'companies'   => Company::all(),
-                                         'categories'  => Category::all(),
-                                         
+                                         'categories'  => Category::all(), 
                                         ]
                     );
     }

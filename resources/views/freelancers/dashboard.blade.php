@@ -17,6 +17,7 @@
 
         @include('layouts.frontend.stylelib')
         @include('layouts.frontend.jslib')
+        @include('freelancers.index')
         <link rel="stylesheet" href="{{ asset('assets/css/frontend.app.css') }}">
     </head>
     <body>
