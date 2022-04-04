@@ -9,7 +9,7 @@
                 <span class="filter-title">Suggested Searches</span>
                 <ul>
 					<li style="background:#FEF7EC; border-color: #FF8549"><a class="u-on-hover" style="color:#FF8549 !important;" href="#" >All</a></li>
-                    @elseif($counter > 8)
+                    @elseif($counter > 99)
                 </ul>
             </div>
 
