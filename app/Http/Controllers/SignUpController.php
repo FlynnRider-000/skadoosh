@@ -5,13 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-// use Illuminate\Support\Facades\Schema;
-// use Illuminate\Database\Schema\Blueprint;
 use App\Models\User;
-use Hash;
-use Illuminate\Support\Str;
-use App\Models\UserVerify;
-use Mail; 
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Providers\RouteServiceProvider;
 
 class SignUpController extends Controller
 {
@@ -41,7 +38,10 @@ class SignUpController extends Controller
             'email'    => 'required|email|unique:users',
             'name'     => 'required',
             'password' => 'required|min:6',
-            'country'  => 'required'
+            'country'  => 'required',
+            'dob' => ['required', 'date', 'before:today'],
+            'avatar' => ['required', 'image' ,'mimes:jpg,jpeg,png','max:1024'],
+
         ]);
         if ($validator->fails()) {
             return redirect()->back()->WithErrors($validator)->withInput();
@@ -49,17 +49,26 @@ class SignUpController extends Controller
         $data = $request->all();
         $check = $this->create($data);
         // if( ($data[0]->role) === 'admin')
-        return view('auth1.login')->withSuccess('Great! You have Successfully loggedin');
+        return redirect('/nx/login')->withSuccess('Great! You have Successfully loggedin');
     }
 
     public function create(array $data)
     {
+        if (request()->has('avatar')) {            
+            $avatar = request()->file('avatar');
+            $avatarName = time() . '.' . $avatar->getClientOriginalExtension();
+            $avatarPath = public_path('/images/');
+            $avatar->move($avatarPath, $avatarName);
+        }
+
         return User::create([
             'role'  =>$data['role'],
             'name'   => $data['name'],
             'email'  => $data['email'],
             'country' => $data['country'],
-            'password' => Hash::make($data['password'])
+            'password' => Hash::make($data['password']),
+            'dob' => date('Y-m-d', strtotime($data['dob'])),
+            'avatar' => "/images/" . $avatarName,
         ]);
     }
 

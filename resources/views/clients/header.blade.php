@@ -16,7 +16,7 @@
                     <div class="col-lg-9 col-md-9 d-flex justify-content-between mt-3">
                             <div class="f-left nav_visible">
                                 <a href="{{ url('') }}" class="nav_login_credential">Find Talent</a>
-                                <a href="{{ url('/post-a-job') }}" class="nav_login_credential">Post a Job</a>
+                                <a href="{{ url('client/post-a-job') }}" class="nav_login_credential">Post a Job</a>
                             </div>
                             <div class="dropdown">
                                 <button class="drondowncss" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

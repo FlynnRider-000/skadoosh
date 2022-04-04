@@ -1,9 +1,7 @@
-@extends('clients.dashboard')
-
 @section('content')
     <link rel="stylesheet" href="{{ asset('assets/css/app.index.css') }}">
 
-    <!-- @include('categories.home-listing', ['categories' => $categories, 'newJobsToday' => $newJobsToday]) -->
+    @include('categories.home-listing', ['categories' => $categories])
     <!-- Client logo -->
     <section class="ctgf">
         <div class="container">

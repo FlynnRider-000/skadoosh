@@ -32,7 +32,7 @@
                                         @csrf
                                         <div class="mb-3">
                                             <label for="username" class="form-label">Email</label>
-                                            <input name="email" type="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email', 'example@example.com') }}" id="username" placeholder="Enter Email" autocomplete="email" autofocus>
+                                            <input name="email" type="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" id="username" placeholder="Enter Email" autocomplete="email" autofocus>
                                             @error('email')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -48,7 +48,7 @@
                                             </div>
                                             <label class="form-label">Password</label>
                                             <div class="input-group auth-pass-inputgroup @error('password') is-invalid @enderror">
-                                                <input type="password" name="password" class="form-control  @error('password') is-invalid @enderror" id="userpassword" value="password" placeholder="Enter password" aria-label="Password" aria-describedby="password-addon">
+                                                <input type="password" name="password" class="form-control  @error('password') is-invalid @enderror" id="userpassword" value="{{ old('password') }}" placeholder="Enter password" aria-label="Password" aria-describedby="password-addon">
                                                 <button class="btn-light " type="button" id="password-addon"><i class="mdi mdi-eye-outline"></i></button>
                                                 @error('password')
                                                 <span class="invalid-feedback" role="alert">
@@ -59,7 +59,7 @@
                                         </div>
 
                                         <div class="form-group mb-3">
-                                            <label for="remember">Remember me</label>
+                                            <label class="form-label">remember me</label>
                                             <input type="checkbox" name="remember" value="1">
                                         </div>
 

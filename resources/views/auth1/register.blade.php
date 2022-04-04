@@ -69,7 +69,6 @@
                                                         <div class="d-flex justify-content-end mr-2">
                                                         <input class="form-check-input" type="radio" required {{ old('role') == $key ? 'checked' : '' }} value="{{ $key }}" name="role" id="role_{{ $key }}">
                                                         </div>
-                                                        
                                                         <div class="card-body text-primary mt-3 flex justify-center text-center">
                                                             <img 
                                                                 class="text-white text-center">
@@ -120,6 +119,35 @@
                                             @endforeach
                                         @endif
                                     </select>
+
+                                    <div class="mb-3">
+                                        <label for="userdob">Date of Birth</label>
+                                        <div class="input-group" id="datepicker1">
+                                            <input type="text" class="form-control @error('dob') is-invalid @enderror" placeholder="dd-mm-yyyy"
+                                                data-date-format="dd-mm-yyyy" data-date-container='#datepicker1' data-date-end-date="0d" value="{{ old('dob') }}"
+                                                data-provide="datepicker" name="dob" autofocus required>
+                                            <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                                            @error('dob')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="avatar">Profile Picture</label>
+                                        <div class="input-group">
+                                            <input type="file" class="form-control @error('avatar') is-invalid @enderror" id="inputGroupFile02" name="avatar" autofocus required>
+                                            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                                        </div>
+                                        @error('avatar')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
 
                                     <div class="form-check mb-3 ">
                                         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">

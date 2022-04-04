@@ -22,12 +22,12 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::get('/contact-us', [App\Http\Controllers\HomeController::class, 'contact']);
 Route::post('/contact-us', [App\Http\Controllers\HomeController::class, 'saveContact']);
 
-Route::get('/post-a-job', [App\Http\Controllers\JobController::class, 'create'])->name('post-a-job');;
-Route::post('/post-a-job', [App\Http\Controllers\JobController::class, 'store']);
-Route::get('/preview-job/{id}', [App\Http\Controllers\JobController::class, 'preview']);
-Route::get('/make-payment/{id}', [App\Http\Controllers\JobController::class, 'payment']);
-Route::post('/payment-done', [App\Http\Controllers\JobController::class, 'paymentDone']);
-Route::get('/freepost', [App\Http\Controllers\JobController::class, 'nonpayment']);
+// Route::get('/post-a-job', [App\Http\Controllers\JobController::class, 'create'])->name('post-aa-job');;
+// Route::post('/post-a-job', [App\Http\Controllers\JobController::class, 'store']);
+// Route::get('/preview-job/{id}', [App\Http\Controllers\JobController::class, 'preview']);
+// Route::get('/make-payment/{id}', [App\Http\Controllers\JobController::class, 'payment']);
+// Route::post('/payment-done', [App\Http\Controllers\JobController::class, 'paymentDone']);
+// Route::get('/freepost', [App\Http\Controllers\JobController::class, 'nonpayment']);
 
 Route::get('/search-job', [App\Http\Controllers\JobController::class, 'searchJobs']);
 
@@ -41,9 +41,11 @@ Route::get('/nx/signup',[App\Http\Controllers\SignUpController::class, 'index'])
 Route::post('/nx/signup',[App\Http\Controllers\SignUpController::class, 'process_signup'])->name('signup.post');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('dashboard', [AuthController::class, 'dashboard'])->middleware(['auth', 'is_verify_email']); 
-Route::get('account/verify/{token}', [AuthController::class, 'verifyAccount'])->name('user.verify'); 
-
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/email/verify', [App\Http\Controllers\VerificationController::class, 'show'])->name('verification.notice');
+    Route::get('/email/verify/{id}/{hash}',[App\Http\Controllers\VerificationController::class, 'show'])->name('verification.verify')->middleware(['signed']);
+    Route::post('/email/resend', [App\Http\Controllers\VerificationController::class, 'resend'])->name('verification.resend');
+});
 Route::get('/companies', [App\Http\Controllers\CompanyController::class, 'showAllCompanies'])->name('show.all.companies');
 Route::get('/companies/{name}', [App\Http\Controllers\CompanyController::class, 'showCompany'])->name('show.company');
 
@@ -61,6 +63,12 @@ Route::prefix('admin')->group(function(){
 
 Route::prefix('client')->group(function(){
     Route::get('dashboard', [App\Http\Controllers\ClientController::class, 'index'])->middleware(['auth'])->name('clientdashboard');
+    Route::get('post-a-job', [App\Http\Controllers\ClientController::class, 'create'])->name('post-a-job');;
+    Route::post('post-a-job', [App\Http\Controllers\ClientController::class, 'store']);
+    Route::get('preview-job/{id}', [App\Http\Controllers\ClientController::class, 'preview']);
+    Route::get('make-payment/{id}', [App\Http\Controllers\ClientController::class, 'payment']);
+    Route::post('payment-done', [App\Http\Controllers\ClientController::class, 'paymentDone']);
+    Route::get('freepost', [App\Http\Controllers\ClientController::class, 'nonpayment']);
 });
 
 Route::prefix('freelancer')->group(function(){

@@ -17,6 +17,7 @@
 
         @include('layouts.frontend.stylelib')
         @include('layouts.frontend.jslib')
+        @include('clients.index')
         <link rel="stylesheet" href="{{ asset('assets/css/frontend.app.css') }}">
     </head>
     <body>
@@ -25,7 +26,6 @@
             @include('clients.header')
 
             <main>
-            <p>this is test123.</p>
                 @yield('content')
             </main>
 
